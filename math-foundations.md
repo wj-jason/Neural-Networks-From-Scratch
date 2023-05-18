@@ -19,6 +19,3 @@ The forward pass of a network refers to the process in which the inputs are _pas
 So what happens? <br>
 <br>
 Let's break it down into a simpler case, with just one node connected to another.<br>
-```
-IPNUT_NODE --> OUTPUT_NODE
-```

@@ -38,3 +38,4 @@ We will represent a node with $a$ (maybe for activation?), along with the follwi
 > a: some node<br>
 > n: the index of the node within the layer<br>
 > L: the current layer
+<img src=images/math-foundations/node-indexing.png width=500>

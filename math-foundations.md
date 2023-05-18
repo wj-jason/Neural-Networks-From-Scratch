@@ -31,3 +31,11 @@ Thus, we will have 21 biases, and 130 weights. <br>
 These are our _learnable parameters_, that is, the purpose of our neural network will be to optimize every single one of these terms to produce an output that we desire. 
 <br>
 Now this is great and all, but at the scale neural nets operate, we would need hundreds of thousands, even millions of these tiny linear equations to describe just the input outputs of a single layer. Furthermore, we have no way of clearly referencing a particular node, weight, or bias, in any particular layer. Thus we need to determine a method for indexing every learnable parameter, as well as a concise way to represent the inputs and outputs of each layer. <br>
+<br>
+We will now introduce the notation that will be used for the remainder of the project.
+Instead of individual node inputs and outpus being represented with $X$ and $Y$, we will reserve these values for the inputs and outputs of the _entire_ network.<br>
+We will represent a node with $a$ (maybe for activation?), along with the follwing super/subscripts: $a_n^{(L)}$. <br>
+> a: some node<br>
+> n: the index of the node within the layer<br>
+> L: the current layer
+<img src=images/math-foundations/node-indexing.png width=500>

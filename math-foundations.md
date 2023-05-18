@@ -39,3 +39,12 @@ We will represent a node with $a$ (maybe for activation?), along with the follwi
 > n: the index of the node within the layer<br>
 > L: the current layer
 <img src=images/math-foundations/node-indexing.png width=500>
+<br>
+
+Moving on to the weights, an indiviudal weight will now be represented with $w_{k, n}^(L)$ (note lowercase). <br>
+> w: some weight<br>
+> k: index of neuron in _next_ layer<br>
+> n: index of node within _current_ layer<br>
+> L: the layer the weight is connecting to ($L\neq 0)
+<img src=images/math-foundations/weight-indexing.png width=500>
+

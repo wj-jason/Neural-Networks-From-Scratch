@@ -18,4 +18,14 @@ The forward pass of a network refers to the process in which the inputs are _pas
 <br>
 So what happens? <br>
 <br>
-Let's break it down into a simpler case, with just one node connected to another.<br>
+Let's break it down into a simpler case, with just one node connected to another.<br><br>
+<img src=images\math-foundations\two-nodes.png width=500>
+<br>
+Each node, labeled $X$ for input, and $Y$ for output, simply hold numbers. As the information in $X$ moves into $Y$, it undergoes a transformation, given as $Y=WX+b$.<br>
+In our context, $W$ is the _weight_ associated with the connection between $X$ and $Y$, and $b$ is the _bias_ associated with $Y$. <br>
+Every connection has a unique weight, and every node (except input nodes) has a unique bias. Referencing the neural net we are working up to, we have nodes layered in the following order:
+```
+2 -> 10 -> 10 -> 1
+```
+Thus, we will have 21 biases, and 130 weights. <br>
+These are our _learnable parameters_, that is, the purpose of our neural network will be to optimize every single one of these terms to produce an output that we desire. 

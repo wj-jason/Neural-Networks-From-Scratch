@@ -45,9 +45,12 @@ Moving on to the weights, an indiviudal weight will now be represented with $w_{
 > _w_: some weight<br>
 > _k_: index of neuron in _next_ layer<br>
 > _n_: index of node within _current_ layer<br>
-> _L_: the layer the weight is connecting to ($L\neq 0$)
+> _L_: the layer the weight is connecting to ($L\neq 0$)<br>
+
 <img src=images/math-foundations/weight-indexing.png width=500>
-<br>
+
 The weights for some layer $L$ are then stored in a matrix $W_L$, where each vertical entry corresponds to the weights associated with an input node.<br>
+
 <img src=images/math-foundations/weight-matrix.png width=500>
 
+Note that some sources will instead store each input node weight horizontally, not vertically, which requires a transpose operation further down the line. To avoid that, we will store them vertically.

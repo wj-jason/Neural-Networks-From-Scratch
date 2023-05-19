@@ -76,3 +76,8 @@ $$\Large a_1^{(1)}=(w_{1,0}^{(1)}a_0^{(0)}+w_{1,1}^{(1)}a_1^{(0)}+w_{1,2}^{(1)}a
 As you can probably tell by now, this gets really messy, really quickly. To avoid having to compute each node indiviudally, we can store the outputs of an entire layer in a column vector, and the computation then comes down to the matrix vector product of the predefined weight matrix $W_L$ and a column vector of input nodes. Then we can add the bias column vector to obtain the result. 
 
 <img src=images/math-foundations/multiple-outputs-transform.png width=750>
+
+As you can see, the result of this linear transformation is the same as iteratively computing individual node outputs! We now have a powerful way to represent the inputs and outputs of each layer. <br>
+We can generalize this result, relating the $L-1^{th}$ layer to the $L^{th}$ as follows:
+
+<img src=images/math-foundations/generalized-input-outputs.png width=750>

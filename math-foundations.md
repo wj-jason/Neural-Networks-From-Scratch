@@ -103,4 +103,16 @@ We will introduce the ReLU function at the output of each layer. This introduces
 Sigmoid on the other hand is applied to the very end of the network, squishing the values of our final output node onto a logistic regression curve. If the value post-sigmoid-squish is less than $\frac{1}{2}$, we can change is to $0$, and if it is greater than or equal to $\frac{1}{2}$, we can set it to $1$, thus fulfilling the pre-stated co-domain of $F$.<br>
 Editing our forward pass function from above to include $R$ and $\sigma$:
 $$\Large F(X)=0 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) < \frac{1}{2}$$
-$$\Large F(X)=1 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) \ge \frac{1}{2}$$
+
+---
+
+## Loss Function
+
+A loss function is a way for us to measure the correctness of our neural network. Once we get some outputs, we can feed those ouptuts along with ground truths into our loss function to get a quantitative measure of our networks ability. <br>
+We will be using Binary Cross-Entropy (BCE) loss, which is defined as follows:
+$$\Large \text{BCE}=\sum_{i}^{C} y_i\text{ln}(\hat{y}_i)$$<br>
+With only two classes, the equation simplifies to:
+$$\Large \text{BCE}=-y_1\text{ln}(\hat{y}_1)-y_2\text{ln}(\hat{y}_2)$$
+Or
+$$\Large \text{BCE}=-y_1\text{ln}(\hat{y}_1)-(1-y_1)\text{ln}(1-\hat{y}_1)$$
+Which is the equation we will be using. 

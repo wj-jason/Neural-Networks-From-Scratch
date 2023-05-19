@@ -89,3 +89,12 @@ We know our network has 4 layers, an input, output, and two hidden layers. Repre
 Representing our neural network as a function $F$ with an input $X$, the forward pass is:
 $$\Large F(X)=W_2(W_1(W_0X+B_0)+B_1)+B_2$$
 As a final note, consider the dimensionality of the input as it moves through the function. Upon multiplication with $W_0$, a $10\text{x}2$ matrix, the result is a $10\text{x}1$ column vector, that we can then legally add the $10\text{x}1$ bias vector to. This trend holds, and as we move into a layer with $k$ nodes, the resulting output vector lives in $\mathbb{R}^k$ space.
+
+---
+
+## Activation Functions
+
+Now as a quick confession, the forward pass formula shown above is not _exactly_ correct. Currenty, our values are dependent soley on the linear transformation that takes place at each step. Furthermore, it was stated earlier that $F(X) \in [0,1]$ but currently, that is not the case.<br>
+We will now define two new functions, called ReLU (standing for Rectified Linear Unit), and Sigmoid ($\sigma$).
+$$\Large \text{ReLU}(x) = \text{R}(x) = \text{max}(0, x)$$
+$$\Large \sigma (x) = \frac{1}{1+e^{-x}}$$

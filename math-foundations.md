@@ -35,14 +35,16 @@ Now this is great and all, but at the scale neural nets operate, we would need h
 We will now introduce the notation that will be used for the remainder of the project.
 Instead of individual node inputs and outpus being represented with $X$ and $Y$, we will reserve these values for the inputs and outputs of the _entire_ network.<br>
 We will represent a node with $a$ (maybe for activation?), along with the follwing super/subscripts: $a_n^{(L)}$. <br>
-> a: some node<br>
-> n: the index of the node within the layer<br>
-> L: the current layer
+> _a_: some node<br>
+> _n_: the index of the node within the layer<br>
+> _L_: the current layer<br>
+
 <img src=images/math-foundations/node-indexing.png width=500>
-Moving on to the weights, an indiviudal weight will now be represented with $w_{k, n}^(L)$ (note lowercase). <br>
-> w: some weight<br>
-> k: index of neuron in _next_ layer<br>
-> n: index of node within _current_ layer<br>
-> L: the layer the weight is connecting to ($L\neq 0)
+
+Moving on to the weights, an indiviudal weight will now be represented with $w_{k, n}^{(L)}$ (note lowercase). <br>
+> _w_: some weight<br>
+> _k_: index of neuron in _next_ layer<br>
+> _n_: index of node within _current_ layer<br>
+> _L_: the layer the weight is connecting to ($L\neq 0$)
 <img src=images/math-foundations/weight-indexing.png width=500>
 

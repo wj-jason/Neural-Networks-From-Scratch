@@ -130,3 +130,10 @@ To better illustrate this function, let's split it up. We know that the first se
 Let's now plot the logistic regression curve (sigmoid), and plot some arbitrary points onto it.
 
 <img src=images/math-foundations/logistic-regression.png width=500>
+
+Suppose the ground truth value for each of these points is 1, that is, $y_1=1$. Then, the class 2 term vanishes, leaving just $-y_1\text{log}(\hat{y}_1)$. Well, once again, $y_1=1$ so we only need to worry about $-\text{log}(\hat{y}_1)$.<br>
+Looking back at the plot, if the truth label is 1, then the ouput values in blue should be as close to 1 as possible for the most accurate results. It's clear that while $0.94$ and $0.72$ are pretty close, $0.29$ and $0.11$ are not. If these values were fed through the final step of the neural network, $0.94$ and $0.72$ round up to $1$, thus outputting a correct result, but the other two values round down, producing incorrect results. <br>
+We can easily determine just how correct each output is, simply by seeing it's distance from 1. $0.94$ is _more_ correct than $0.72$, thus an output of $0.72$ should be penalized heavier than $0.94$, even though they produce the same value. <br>
+The penalty is then determined by $-log(x)$. For a nice visualization, let's plot the function first: 
+
+<img src=images/math-foundations/negative-log.png width=500>

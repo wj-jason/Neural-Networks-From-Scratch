@@ -54,3 +54,9 @@ The weights for some layer $L$ are then stored in a matrix $W_L$, where each ver
 <img src=images/math-foundations/weight-matrix.png width=500>
 
 Note that some sources will instead store each input node weight horizontally, not vertically, which requires a transpose operation further down the line. To avoid that, we will store them vertically.
+<br>
+<br>
+Finally, we have the biases. As stated earlier, every node (except input nodes) will have a bias term associated with them. In order to store these, we will do so in a column vector. The column vector will be represented with $B_L$, where once again, $L$ is the reference to the layer at which the biases operate. <br>
+
+<img src=images/math-foundations/bias-indexing.png width=500>
+

@@ -66,3 +66,11 @@ Now that we have all our notation figured out, let's see what happens to the out
 
 Instead of just one weight and one activation value affecting the output node, we have three weights, and three activations, along with a single bias that will determine the value of the output node. Mathematically, we can represent this process as a weighted sum:<br>
 $$\Large a_0^{(1)}=(w_{0,0}^{(1)}a_0^{(0)}+w_{0,1}^{(1)}a_1^{(0)}+w_{0,2}^{(1)}a_2^{(0)})+b_0^{(1)}$$
+But what if there are multiple output nodes:
+
+<img src=images/math-foundations/multiple-outputs.png width=500>
+
+Then, we can compute $a_0^{(1)}$ and $a_1^{(1)}$ indivudally, based on their respective connections:
+$$\Large a_0^{(1)}=(w_{0,0}^{(1)}a_0^{(0)}+w_{0,1}^{(1)}a_1^{(0)}+w_{0,2}^{(1)}a_2^{(0)})+b_0^{(1)}$$
+$$\Large a_1^{(1)}=(w_{1,0}^{(1)}a_0^{(0)}+w_{1,1}^{(1)}a_1^{(0)}+w_{1,2}^{(1)}a_2^{(0)})+b_1^{(1)}$$
+As you can probably tell by now, this gets really messy, really quickly. To avoid having to compute each node indiviudally, we can store the outputs of an entire layer in a column vector, and the computation then comes down to the matrix vector product of the predefined weight matrix $W_L$ and a column vector of input nodes. Then we can add the bias column vector to obtain the result. 

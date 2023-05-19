@@ -111,9 +111,19 @@ $$\Large F(X)=1 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) \ge \frac{1}{2}$$
 
 A loss function is a way for us to measure the correctness of our neural network. Once we get some outputs, we can feed those ouptuts along with ground truths into our loss function to get a quantitative measure of our networks ability. <br>
 We will be using Binary Cross-Entropy (BCE) loss, which is defined as follows:
-$$\Large \text{J}=-\sum_{i}^{C} y_i\text{ln}(\hat{y}_i)$$
+$$\Large \text{J}=-\sum_{i}^{C} y_i\text{log}(\hat{y}_i)$$
 With only two classes, the equation simplifies to:
-$$\Large \text{J}=-y_1\text{ln}(\hat{y}_1)-y_2\text{ln}(\hat{y}_2)$$
+$$\Large \text{J}=-y_1\text{log}(\hat{y}_1)-y_2\text{log}(\hat{y}_2)$$
 Or
-$$\Large \text{J}=-y_1\text{ln}(\hat{y}_1)-(1-y_1)\text{ln}(1-\hat{y}_1)$$
-Which is the equation we will be using. 
+$$\Large \text{J}=-y_1\text{log}(\hat{y}_1)-(1-y_1)\text{log}(1-\hat{y}_1)$$
+Which is the equation we will be using. <br>
+<br>
+So what does all this mean? 
+<br>
+Well starting with the new variables we have introduced, 
+> J: The output of our loss function, how wrong (or right) is our network?<br>
+> $y$: The ground truth value given some output<br>
+> $\hat{y}$: The prediction outputted by the forward pass<br>
+
+To be a little more precise with what $\hat{y}$ is, these will be our raw outputs, called _logits_. These logits are the values our neural network spits out, _before_ undergoing the sigmoid squishification. 
+$$\Large \text{logit}=W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3$$

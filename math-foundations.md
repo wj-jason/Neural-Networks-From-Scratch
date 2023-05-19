@@ -47,4 +47,7 @@ Moving on to the weights, an indiviudal weight will now be represented with $w_{
 > _n_: index of node within _current_ layer<br>
 > _L_: the layer the weight is connecting to ($L\neq 0$)
 <img src=images/math-foundations/weight-indexing.png width=500>
+<br>
+The weights for some layer $L$ are then stored in a matrix $W_L$, where each vertical entry corresponds to the weights associated with an input node.<br>
+<img src=images/math-foundations/weight-matrix.png width=500>
 

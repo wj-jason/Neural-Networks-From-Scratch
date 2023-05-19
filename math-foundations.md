@@ -88,7 +88,7 @@ All in all, we can now represent the values passing between two layers with $X_L
 We know our network has 4 layers, an input, output, and two hidden layers. Representing the _forward pass_ then comes down to layering these expressions together.<br>
 Representing our neural network as a function $F$ with an input $X$, the forward pass is:
 $$\Large F(X)=W_3(W_2(W_1X+B_1)+B_2)+B_3$$
-As a final note, consider the dimensionality of the input as it moves through the function. Upon multiplication with $W_0$, a $10\text{x}2$ matrix, the result is a $10\text{x}1$ column vector, that we can then legally add the $10\text{x}1$ bias vector to. This trend holds, and as we move into a layer with $k$ nodes, the resulting output vector lives in $\mathbb{R}^k$ space.
+As a final note, consider the dimensionality of the input as it moves through the function. Upon multiplication with $W_1$, a $10\text{x}2$ matrix, the result is a $10\text{x}1$ column vector, that we can then legally add the $10\text{x}1$ bias vector to. This trend holds, and as we move into a layer with $k$ nodes, the resulting output vector lives in $\mathbb{R}^k$ space.
 
 ---
 

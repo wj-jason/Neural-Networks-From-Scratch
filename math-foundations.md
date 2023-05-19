@@ -111,7 +111,7 @@ $$\Large F(X)=1 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) \ge \frac{1}{2}$$
 
 A loss function is a way for us to measure the correctness of our neural network. Once we get some outputs, we can feed those ouptuts along with ground truths into our loss function to get a quantitative measure of our networks ability. <br>
 We will be using Binary Cross-Entropy (BCE) loss, which is defined as follows:
-$$\Large \text{BCE}=\sum_{i}^{C} y_i\text{ln}(\hat{y}_i)$$<br>
+$$\Large \text{BCE}=\sum_{i}^{C} y_i\text{ln}(\hat{y}_i)$$
 With only two classes, the equation simplifies to:
 $$\Large \text{BCE}=-y_1\text{ln}(\hat{y}_1)-y_2\text{ln}(\hat{y}_2)$$
 Or

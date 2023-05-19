@@ -125,9 +125,8 @@ Well starting with the new variables we have introduced,
 > $y$: The ground truth value of an input<br>
 > $\hat{y}$: The prediction outputted by the forward pass<br>
 
-To be a little more precise with what $\hat{y}$ is, this is the value _before_ setting it to 0 or 1. It is the exact output of the forward pass, thus will be a value between 0 and 1. <br>
-Because of this, $\hat{y}$ as a _prediction probability_. <br>
-If the true label is 1, and $\hat{y}=0.98$, we were 98% accurate with our prediction.<br>
-If the true label is 1, and $\hat{y}=0.15$, we were 15% accurate with our prediction.<br>
-It's pretty clear now that if the true label $y$ is 1, the correctness of our model can be interpreted as exactly what $\hat{y}$ is.<br>
-This is where the next part of the formula comes into play. Notice how we feed $\hat{y}$ into a $-\text{log}$ function. This function is asymptotic to infinity when approaching 0 from the right, with an x-intercept at 1. The closer our value is to 1, the smaller the output of $-\text{log}(x)$. <br>
+To be a little more precise with what $\hat{y}$ is, this is the value _before_ setting it to 0 or 1. It is the exact output of the forward pass, thus will be a value between 0 and 1. Because of this, $\hat{y}$ as a _prediction probability_. <br>
+To better illustrate this function, let's split it up. We know that the first section of the expression: $y_1\text{log}(\hat{y}_1)$ references the correctness of class 1, whereas $(1-y_1)\text{log}(1-\hat{y}_1)$ references class 2. The reason we represent $y_2$ and $\hat{y}_2$ in terms of $y_1$ and $\hat{y}_1$ will be evident shortly.<br>
+Let's now plot the logistic regression curve (sigmoid), and plot some arbitrary points onto it.
+
+<img src=images/math-foundations/logistic-regression.png width=500>

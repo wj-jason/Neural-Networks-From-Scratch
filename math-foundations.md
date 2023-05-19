@@ -122,8 +122,12 @@ So what does all this mean?
 <br>
 Well starting with the new variables we have introduced, 
 > J: The output of our loss function, how wrong (or right) is our network?<br>
-> $y$: The ground truth value given some output<br>
+> $y$: The ground truth value of an input<br>
 > $\hat{y}$: The prediction outputted by the forward pass<br>
 
-To be a little more precise with what $\hat{y}$ is, these will be our raw outputs, called _logits_. These logits are the values our neural network spits out, _before_ undergoing the sigmoid squishification. 
-$$\Large \text{logit}=W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3$$
+To be a little more precise with what $\hat{y}$ is, this is the value _before_ setting it to 0 or 1. It is the exact output of the forward pass, thus will be a value between 0 and 1. <br>
+Because of this, $\hat{y}$ as a _prediction probability_. <br>
+If the true label is 1, and $\hat{y}=0.98$, we were 98% accurate with our prediction.<br>
+If the true label is 1, and $\hat{y}=0.15$, we were 15% accurate with our prediction.<br>
+It's pretty clear now that if the true label $y$ is 1, the correctness of our model can be interpreted as exactly what $\hat{y}$ is.<br>
+This is where the next part of the formula comes into play. Notice how we feed $\hat{y}$ into a $-\text{log}$ function. This function is asymptotic to infinity when approaching 0 from the right, with an x-intercept at 1. The closer our value is to 1, the smaller the output of $-\text{log}(x)$. <br>

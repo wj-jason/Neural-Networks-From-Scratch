@@ -147,3 +147,11 @@ But what if the ground truth value is 0? Then $y_1=0$, causing the class 1 term 
 If our ground truth is 0, we need to think of the curve but flipped. The closer the value is to 0, the more correct we are. Taking $1-0.11$ yields $0.89$, a number that when you throw into $-\text{log}(x)$, will be penalized much less than say $1-0.94$. By taking $1-\hat{y}_1$, we obtain the correctness if the ground truth is 0, just as we expect. <br>
 <br>
 In summary, we can define a function J following the formula for Binary Cross-Entropy to obtain a loss function that can quantitatively measure how well our neural network performs. 
+
+---
+
+## Backpropagation
+
+Backpropagation refers to obtaining the gradient of the cost function $J$. The goal is to know how to decrease $J$, based on our learnable parameters, as we will see in the next section dealing with gradient descent. This requires us to determine the effect that each weight and bias has on $J$ through a series of partial derivatives. <br>
+Let's simplify this to a case with three nodes:
+

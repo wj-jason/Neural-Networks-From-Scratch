@@ -137,3 +137,13 @@ We can easily determine just how correct each output is, simply by seeing it's d
 The penalty is then determined by $-log(x)$. For a nice visualization, let's plot the function first: 
 
 <img src=images/math-foundations/negative-log.png width=500>
+
+It's pretty clear to see that this will serve as a nice penalty function. The closer the value is to 1, the lower the penalty, with values approaching 0 exponentially increasing the penalty.<br>
+<br>
+But what if the ground truth value is 0? Then $y_1=0$, causing the class 1 term to vanish, leaving just $-(1-y_1)\text{log}(1-\hat{y}_1)$. The same simplifications can occur, thus leaving us with $-\text{log}(1-\hat{y}_1)$. Let's look back at the logistic curve figure to find out what the $(1-\hat{y}_1)$ term refers to:
+
+<img src=images/math-foundations/logistic-regression.png width=500>
+
+If our ground truth is 0, we need to think of the curve but flipped. The closer the value is to 0, the more correct we are. Taking $1-0.11$ yields $0.89$, a number that when you throw into $-\text{log}(x)$, will be penalized much less than say $1-0.94$. By taking $1-\hat{1}_1$, we obtain the correctness if the ground truth is 0, just as we expect. <br>
+<br>
+In summary, we can define a function J following the formula for Binary Cross-Entropy to obtain a loss function that can quantitatively measure how well our neural network performs. 

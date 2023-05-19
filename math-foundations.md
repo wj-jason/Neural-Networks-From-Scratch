@@ -144,6 +144,6 @@ But what if the ground truth value is 0? Then $y_1=0$, causing the class 1 term 
 
 <img src=images/math-foundations/logistic-regression.png width=500>
 
-If our ground truth is 0, we need to think of the curve but flipped. The closer the value is to 0, the more correct we are. Taking $1-0.11$ yields $0.89$, a number that when you throw into $-\text{log}(x)$, will be penalized much less than say $1-0.94$. By taking $1-\hat{1}_1$, we obtain the correctness if the ground truth is 0, just as we expect. <br>
+If our ground truth is 0, we need to think of the curve but flipped. The closer the value is to 0, the more correct we are. Taking $1-0.11$ yields $0.89$, a number that when you throw into $-\text{log}(x)$, will be penalized much less than say $1-0.94$. By taking $1-\hat{y}_1$, we obtain the correctness if the ground truth is 0, just as we expect. <br>
 <br>
 In summary, we can define a function J following the formula for Binary Cross-Entropy to obtain a loss function that can quantitatively measure how well our neural network performs. 

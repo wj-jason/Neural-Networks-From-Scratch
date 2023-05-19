@@ -81,3 +81,5 @@ As you can see, the result of this linear transformation is the same as iterativ
 We can generalize this result, relating the $L-1^{th}$ layer to the $L^{th}$ as follows:
 
 <img src=images/math-foundations/generalized-input-outputs.png width=750>
+
+For one last notational reminder, $X_L$ represents the values of the activations within some layer $L$ 

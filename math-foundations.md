@@ -82,4 +82,9 @@ We can generalize this result, relating the $L-1^{th}$ layer to the $L^{th}$ as 
 
 <img src=images/math-foundations/generalized-input-outputs.png width=750>
 
-For one last notational reminder, $X_L$ represents the values of the activations within some layer $L$ 
+For one last notational reminder, $X_L$ represents the values of the activations within some layer $L$<br>
+<br>
+All in all, we can now represent the values passing between two layers with $X_L=W_LX_{L-1}+B_L$.<br>
+We know our network has 4 layers, an input, output, and two hidden layers. Representing the _forward pass_ then comes down to layering these expressions together.<br>
+Representing our neural network as a function $F$ with an input $X$, the forward pass is:
+$$\Large F(X)=W_2(W_1(W_0X+B_0)+B_1)+B_2$$

@@ -103,6 +103,7 @@ We will introduce the ReLU function at the output of each layer. This introduces
 Sigmoid on the other hand is applied to the very end of the network, squishing the values of our final output node onto a logistic regression curve. If the value post-sigmoid-squish is less than $\frac{1}{2}$, we can change is to $0$, and if it is greater than or equal to $\frac{1}{2}$, we can set it to $1$, thus fulfilling the pre-stated co-domain of $F$.<br>
 Editing our forward pass function from above to include $R$ and $\sigma$:
 $$\Large F(X)=0 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) < \frac{1}{2}$$
+$$\Large F(X)=1 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) \ge \frac{1}{2}$$
 
 ---
 

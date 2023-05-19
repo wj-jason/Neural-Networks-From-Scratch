@@ -60,3 +60,9 @@ Finally, we have the biases. As stated earlier, every node (except input nodes) 
 
 <img src=images/math-foundations/bias-indexing.png width=500>
 
+Now that we have all our notation figured out, let's see what happens to the output of a node with multiple connections: 
+
+<img src=images/math-foundations/multiple-nodes.png width=500>
+
+Instead of just one weight and one activation value affecting the output node, we have three weights, and three activations, along with a single bias that will determine the value of the output node. Mathematically, we can represent this process as a weighted sum:<br>
+$$\Large a_0^{(1)}=(w_{0,0}^{(1)}a_0^{(0)}+w_{0,1}^{(1)}a_1^{(0)}+w_{0,2}^{(1)}a_2^{(0)})+b_0^{(1)}$$

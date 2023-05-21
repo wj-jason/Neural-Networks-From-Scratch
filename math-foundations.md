@@ -161,5 +161,12 @@ Breaking down the new formulas that have been introduced, $J$ is still the cost 
 $z^{(L)}$ is the weighted sum of some layer $L$. Until now, we have just called this $a$, but storing the weighted sum into it's own variable will simplify the derivatives moving forward. <br>
 $a^{(L)}$ is still the activation of some node in some layer, however written as a function of $z$, applying some non-linear transformation to $z$ as its output. <br>
 <br>
-From here, computing the gradient is simply a basic chain rule exercise. For clarity, the parameters of the cost function $J$ have been explicitly listed, however they would usually be stored in a vector, thus making the gradient computation similar to that of a regular calculus course. <br>
+From here, computing the gradient is a classic chain rule exercise. For clarity, the parameters of the cost function $J$ have been explicitly listed, however they would usually be stored in a vector. <br>
 $$\Large \frac{\partial J}{\partial w_1}=\frac{\partial z^{(1)}}{\partial w_1}\frac{\partial a^{(1)}}{\partial z^{(1)}}\frac{\partial z^{(2)}}{\partial a^{(1)}}\frac{\partial a^{(2)}}{\partial z^{(2)}}\frac{\partial J}{\partial a^{(2)}}$$
+$$\Large \frac{\partial J}{\partial b_1}=\frac{\partial z^{(1)}}{\partial b_1}\frac{\partial a^{(1)}}{\partial z^{(1)}}\frac{\partial z^{(2)}}{\partial a^{(1)}}\frac{\partial a^{(2)}}{\partial z^{(2)}}\frac{\partial J}{\partial a^{(2)}}$$
+$$\Large \frac{\partial J}{\partial w_2}=\frac{\partial z^{(2)}}{\partial w_2}\frac{\partial a^{(2)}}{\partial z^{(2)}}\frac{\partial J}{\partial a^{(2)}}$$
+$$\Large \frac{\partial J}{\partial b_2}=\frac{\partial z^{(2)}}{\partial b_2}\frac{\partial a^{(2)}}{\partial z^{(2)}}\frac{\partial J}{\partial a^{(2)}}$$
+
+To further clarify these expressions, we can set the network up showing it's weights and biases.
+
+<img src=/images/math-foundations/three-nodes-tree.png width=500>

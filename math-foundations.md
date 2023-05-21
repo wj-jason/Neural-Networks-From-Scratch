@@ -155,3 +155,8 @@ In summary, we can define a function J following the formula for Binary Cross-En
 Backpropagation refers to obtaining the gradient of the cost function $J$. The goal is to know how to decrease $J$, based on our learnable parameters, as we will see in the next section dealing with gradient descent. This requires us to determine the effect that each weight and bias has on $J$ through a series of partial derivatives. <br>
 Let's simplify this to a case with three nodes:
 
+<img src=/images/math-foundations/three-nodes.png width=500>
+
+Breaking down the new formulas that have been introduced, $J$ is still the cost function, but written explicitly with it's parameters, being the weights and biases. The formula has also been simplified, dropping the subscript for the class and simply taking the $-log$ of the prediction probability. <br>
+$z^{(L)}$ is the weighted sum of some layer $L$. Until now, we have just called this $a$, but storing the weighted sum into it's own variable will simplify the derivatives moving forward. <br>
+$a^{(L)}$ is still the activation of some node in some layer, however written as a function of $z$, applying some non-linear transformation to $z$ as its output. 

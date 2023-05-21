@@ -169,4 +169,19 @@ $$\Large \frac{\partial J}{\partial b_2}=\frac{\partial z^{(2)}}{\partial b_2}\f
 
 To further clarify these expressions, we can set the network up showing it's weights and biases.
 
-<img src=/images/math-foundations/three-nodes-tree.png width=500>
+<img src=/images/math-foundations/three-nodes-tree.png width=750>
+
+From this figure, computing each partial is just a matter of tracing down the tree to determine the dependence of each variable on $J$.<br>
+<br>
+Since we defined each step with it's own formula, it's not too hard to determine what the derivatives actually come out to:<br>
+
+$$
+\begin{align*}
+\Large \frac{\partial z^{(L)}}{\partial w^{(L)}}&=\Large a^{(L-1)} \\
+\Large \frac{\partial z^{(L)}}{\partial b^{(L)}}&=\Large 1 \\
+\Large \frac{\partial a^{(L)}}{\partial z^{(L)}}&=\Large R'(z^{(L)}) \\
+\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{\sigma({a^{(\text{final})}})}\sigma '(a^{(\text{final})}) \\
+\text{or} \\
+\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{\sigma({1-a^{(\text{final})}})}\sigma '(1-a^{(\text{final})}) \\
+\end{align*}
+$$

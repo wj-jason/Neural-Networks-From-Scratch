@@ -159,4 +159,7 @@ Let's simplify this to a case with three nodes:
 
 Breaking down the new formulas that have been introduced, $J$ is still the cost function, but written explicitly with it's parameters, being the weights and biases. The formula has also been simplified, dropping the subscript for the class and simply taking the $-log$ of the prediction probability. <br>
 $z^{(L)}$ is the weighted sum of some layer $L$. Until now, we have just called this $a$, but storing the weighted sum into it's own variable will simplify the derivatives moving forward. <br>
-$a^{(L)}$ is still the activation of some node in some layer, however written as a function of $z$, applying some non-linear transformation to $z$ as its output. 
+$a^{(L)}$ is still the activation of some node in some layer, however written as a function of $z$, applying some non-linear transformation to $z$ as its output. <br>
+<br>
+From here, computing the gradient is simply a basic chain rule exercise. For clarity, the parameters of the cost function $J$ have been explicitly listed, however they would usually be stored in a vector, thus making the gradient computation similar to that of a regular calculus course. <br>
+$$\Large \frac{\partial J}{\partial w_1}=\frac{\partial z^{(1)}}{\partial w_1}\frac{\partial a^{(1)}}{\partial z^{(1)}}\frac{\partial z^{(2)}}{\partial a^{(1)}}\frac{\partial a^{(2)}}{\partial z^{(2)}}\frac{\partial J}{\partial a^{(2)}}$$

@@ -26,4 +26,7 @@ $$\Large \text{J}=-\text{log}(\hat{y})$$
 
 ## Backpropagation
 
-This is where the definitions get a little more sophisticated, we need to define the cost function derivative with respect to each layers learnable parameters. 
+This is where the definitions get a little more sophisticated, we need to define the cost function derivative with respect to each layers learnable parameters. <br>
+In order to better visualize all the formulas, we can use the follwing tree diagram:
+
+<img src=/images/math-foundations-2/tree-diagram.png width=500>

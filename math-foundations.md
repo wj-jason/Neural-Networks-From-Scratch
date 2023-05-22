@@ -185,8 +185,10 @@ $$
 \Large \frac{\partial z^{(L)}}{\partial w^{(L)}}&=\Large a^{(L-1)} \\
 \Large \frac{\partial z^{(L)}}{\partial b^{(L)}}&=\Large 1 \\
 \Large \frac{\partial a^{(L)}}{\partial z^{(L)}}&=\Large R'(z^{(L)}) \\
-\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{\sigma({a^{(\text{final})}})}\sigma '(a^{(\text{final})}) \\
+\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{{a^{(\text{final})}}}\\
 \text{or} \\
-\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{\sigma({1-a^{(\text{final})}})}\sigma '(1-a^{(\text{final})}) \\
+\Large \frac{\partial J}{\partial a^{(\text{final})}}&=\Large -\frac{1}{1-{a^{(\text{final})}}}\\
 \end{align*}
 $$
+
+Note $a^{\text(final)}=\hat{y}$, and it is the only time $\sigma (x)$ is used to go from $z$ to $a$.

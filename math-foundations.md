@@ -192,3 +192,14 @@ $$
 $$
 
 Note $a^{\text(final)}=\hat{y}$, and it is the only time $\sigma (x)$ is used to go from $z$ to $a$.
+
+---
+
+## Gradient Descent
+
+To finish off the math foundations, we now need some way to use the gradient information in order to optimize or _train_ our network. This is done through gradient descent, where the weights and biases are tuned to minimize the cost function in small increments called the _learning rate_. <br>
+The formula for gradient descent is given as follows: 
+$$\Large \theta:=\theta-\alpha\frac{\partial J}{\partial \theta}$$
+Where $\theta$ is some learnable parameter, and $\alpha$ is the learning rate. <br>
+What this formula tells us is to update $\theta$ (some learnable param.), against the gradient of the cost function with respect to that learnable parameter. $\alpha$ specifies the rate at which this decrease occurs. If $\alpha$ is too large, the function may never minimize as it jumps between non-minima, but if $\alpha$ is too small, the incremental changes cause the function to minimize inefficiently. <br>
+All learnable parameters are updated simultaneously during the training process, and the minimization is done iteratively, repeating until $\theta$ converges. 

@@ -10,7 +10,7 @@ The dataset we will be using is sklearn.datasets.make_circles<br>
 This dataset will require the use of non-linearity, introduced with ReLU functions between the hidden layers. 
 <br>
 This project will be split into the following parts:
-1. Define all the math within a nerual network in general terms
+1. Define all the math within a neural network in general terms
 2. Define all the math required for _our_ network
 3. Translate the math into C++
 4. Test against PyTorch model

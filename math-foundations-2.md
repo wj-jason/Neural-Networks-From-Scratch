@@ -49,4 +49,34 @@ $$
 $$
 
 The capital letters are being used to denote the relevant values of the _entire_ layer, wth the layer indexed by the superscript. <br>
-It's also important to note that $\frac{\partial J}{\partial A^{(3)}}$ has two possible values, either $\frac{-1}{A^{(3)}}$ or $\frac{-1}{1-A^{(3)}}$. The expressions will only show the former, but we will need to program both depending on the class. 
+It's also important to note that $\frac{\partial J}{\partial A^{(3)}}$ has two possible values, either $\frac{-1}{A^{(3)}}$ or $\frac{-1}{1-A^{(3)}}$. The expressions will only show the former, but we will need to program both depending on the class. <br>
+<br>
+Moving on to layer 2:
+
+$$
+\begin{align*}
+\Large \frac{\partial J}{\partial W^{(2)}}&=\Large \frac{\partial Z^{(2)}}{\partial W^{(2)}}\frac{\partial A^{(2)}}{\partial Z^{(2)}}\frac{\partial Z^{(3)}}{\partial A^{(2)}}\frac{\partial A^{(3)}}{\partial Z^{(3)}}\frac{\partial J}{\partial A^{(3)}} \\
+\\
+&=\boxed{\Large A^{(1)}\text{R}'(Z^{(2)})W^{(3)}\sigma '(Z^{(3)})\frac{-1}{A^{(3)}}}
+\\
+\\
+\Large \frac{\partial J}{\partial B^{(2)}}&=\Large \frac{\partial Z^{(2)}}{\partial B^{(2)}}\frac{\partial A^{(2)}}{\partial Z^{(2)}}\frac{\partial Z^{(3)}}{\partial A^{(2)}}\frac{\partial A^{(3)}}{\partial Z^{(3)}}\frac{\partial J}{\partial A^{(3)}} \\
+\\
+&=\boxed{\Large \text{R}'(Z^{(2)})W^{(3)}\sigma '(Z^{(3)})\frac{-1}{A^{(3)}}}
+\end{align*}
+$$
+
+And finally, layer 1:
+
+$$
+\begin{align*}
+\Large \frac{\partial J}{\partial W^{(1)}}&=\Large \frac{\partial Z^{(1)}}{\partial W^{(1)}}\frac{\partial A^{(1)}}{\partial Z^{(1)}}\frac{\partial Z^{(2)}}{\partial A^{(1)}}\frac{\partial A^{(2)}}{\partial Z^{(2)}}\frac{\partial Z^{(3)}}{\partial A^{(2)}}\frac{\partial A^{(3)}}{\partial Z^{(3)}}\frac{\partial J}{\partial A^{(3)}} \\
+\\
+&=\boxed{\Large \text{X}\text{R}'(Z^{(1)})W^{(2)}\text{R}'(Z^{(2)})W^{(3)}\sigma '(Z^{(3)})\frac{-1}{A^{(3)}}}
+\\
+\\
+\Large \frac{\partial J}{\partial B^{(1)}}&=\Large \frac{\partial Z^{(1)}}{\partial W^{(1)}}\frac{\partial A^{(1)}}{\partial Z^{(1)}}\frac{\partial Z^{(2)}}{\partial A^{(1)}}\frac{\partial A^{(2)}}{\partial Z^{(2)}}\frac{\partial Z^{(3)}}{\partial A^{(2)}}\frac{\partial A^{(3)}}{\partial Z^{(3)}}\frac{\partial J}{\partial A^{(3)}} \\
+\\
+&=\boxed{\Large \text{R}'(Z^{(1)})W^{(2)}\text{R}'(Z^{(2)})W^{(3)}\sigma '(Z^{(3)})\frac{-1}{A^{(3)}}}
+\end{align*}
+$$

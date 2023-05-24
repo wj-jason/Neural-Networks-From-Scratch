@@ -99,7 +99,7 @@ We will now define two new functions, called ReLU (standing for Rectified Linear
 $$\Large \text{ReLU}(x) = \text{R}(x) = \text{max}(0, x)$$
 $$\Large \sigma (x) = \frac{1}{1+e^{-x}}$$
 To describe the purpose of each function, ReLU simply eliminates the possibility for negative values, whereas Sigmoid squishes the entire real number line between 0 and 1. <br>
-We will introduce the ReLU function at the output of each layer. This introduces non-linearity to our neural network, and solves the 'vanishing gradient' problem, which we will see once we get to backpropagation and gradient descent.<br>
+We will introduce the ReLU function at the output of each layer. This introduces non-linearity to our neural network. In other words, without these non-linear functions, our neural networks output is just one big linear transformation, meaning it is difficult to make predictions on non-linear data.<br>
 Sigmoid on the other hand is applied to the very end of the network, squishing the values of our final output node onto a logistic regression curve. If the value post-sigmoid-squish is less than $\frac{1}{2}$, we can change is to $0$, and if it is greater than or equal to $\frac{1}{2}$, we can set it to $1$, thus fulfilling the pre-stated co-domain of $F$.<br>
 Editing our forward pass function from above to include $R$ and $\sigma$:
 $$\Large F(X)=0 \iff \sigma(W_3(R(W_2(R(W_1X+B_1))+B_2))+B_3) < \frac{1}{2}$$

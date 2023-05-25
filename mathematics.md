@@ -15,7 +15,7 @@ It will be broken up into the following sections:
 
 Before diving into the actual math, we need to ensure that there are no ambiguities with respect to what part of the neural net is being referenced. <br>
 Starting with the layers themselves, they will be indexing starting from $L=0$. These indices will appear as superscripts surrounded by parenthesis. <br>
-For example, in order to reference the inputs, $X$ of layer $0$, it would be notated $X^{(0)}$. The outputs of layer $0$ are then notated as $Y^{(0)}$, which as we will see soon, act as the next layers inputs. That is, $Y^{(0)}=X^{(1)}$.
+For example, in order to reference the inputs, $X$ of layer $0$, it would be notated $X^{(0)}$ (this is a brief allusion to the next section on the forward pass, but $X$ and $Y$ are column vectors holding the inputs and outputs of each neuron in a particular layer). The outputs of layer $0$ are then notated as $Y^{(0)}$, which as we will see soon, act as the next layers inputs. That is, $Y^{(0)}=X^{(1)}$.
 
 INSERT IMAGE HERE
 
@@ -55,7 +55,7 @@ $$
 
 The forward pass refernces transformation of the input as it moves throughout the network. Each neuron from the input layer is connected to every single neuron in the output layer. Thus the value of some output neuron $y_m^{(L)}$ is given as a weighted sum of all neurons in the previous layer, plus the bias term for that neuron. 
 $$\Large y_m^{(L)}=(w_{m0}^{(L)}x_0^{(L-1)}+w_{m1}^{(L)}x_1^{(L-1)}w_{m2}^{(L)}x_2^{(L-1)}+ ... + w_{mn}^{(L)}x_n^{(L-1)})+b_m^{(L)}$$
-Now doing this calculation for every neuron in the output layer wouldn't be too bad, but since we have defined weight matricies and bias vectors, we can store our inputs $X$ in a column vector and take a matrix vector product.
+Now doing this calculation for every neuron in the output layer wouldn't be too bad, but since we have defined weight matricies and bias vectors, we can store our inputs and outputs in column vectors and take a matrix vector product.
 $$\Large Y^{(L)}=W^{(L)}X^{(L-1)}+B^{(L)}$$
 Subsctiped with dimensionalities for clarity:
 $$\Large Y_{m \text{x} 1}^{(L)}=W_{m \text{x} n}^{(L)}X_{n \text{x} 1}^{(L-1)}+B_{m \text{x} 1}^{(L)}$$

@@ -334,3 +334,7 @@ $$
 &=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
 \end{align*}
 $$
+
+But what if there's an activation layer?
+
+INSERT IMAGE HERE

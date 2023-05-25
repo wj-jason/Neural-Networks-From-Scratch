@@ -195,6 +195,15 @@ $$
 In other words (once again dropping superscripts):
 $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
 
+Finally, we also need to compute $\frac{\partial C}{\partial X}$.
+
+The reason why may not be obvious now, but we cannot compute $\frac{\partial C}{\partial Y}$ without it. The details to this will be explored in the third backprop. section, thus for now we will focus soley on the computation.
+
+Some input $x_n$ affects the entirety of the output vector $Y$. Thus we get the following:
+$$\Large \frac{\partial C^{(L)}}{\partial x_n^{}}\frac{\partial y_0^{(L)}}{\partial{x_n}}$$
+
+
+
 ---
 
 ## 6. Backpropagation 2

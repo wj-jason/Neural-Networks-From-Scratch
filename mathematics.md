@@ -172,27 +172,27 @@ Following a similar process to the weights:
 $$\Large \frac{\partial C}{\partial b_{0}}=\frac{\partial y_0}{\partial b_{0}}\frac{\partial C}{\partial y_0}+\frac{\partial y_1}{\partial b_{0}}\frac{\partial C}{\partial y_1}+...+\frac{\partial y_m}{\partial b_{0}}\frac{\partial C}{\partial y_m}$$
 
 Which simplifies in the same fashion, as $b_0$ only affects one neuron:
-$$\Large \frac{\partial y_0^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$
+$$\Large \frac{\partial y_0}{\partial b_{0}}\frac{\partial C}{\partial y_0}$$
 
 But referring back to the forward pass formula, every bias is simply a constant, thus it's derivative is $1$:
-$$\Large \frac{\partial C^{(L)}}{\partial b_{0}^{(L)}}=\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$
+$$\Large \frac{\partial C}{\partial b_{0}}=\frac{\partial C}{\partial y_0}$$
 
 Generalizing:
-$$\Large \frac{\partial C^{(L)}}{\partial b_{m}^{(L)}}=\frac{\partial C^{(L)}}{\partial y_m^{(L)}}$$
+$$\Large \frac{\partial C}{\partial b_{m}}=\frac{\partial C}{\partial y_m}$$
 
 Thus the vector is now:
 
 $$
-\Large \frac{\partial C^{(L)}}{\partial B^{(L)}}=
+\Large \frac{\partial C}{\partial B}=
 \begin{bmatrix}
-    \frac{\partial C^{(L)}}{\partial y_0^{(L)}} \\
-    \frac{\partial C^{(L)}}{\partial y_1^{(L)}} \\
+    \frac{\partial C}{\partial y_0} \\
+    \frac{\partial C}{\partial y_1} \\
     \vdots \\
-    \frac{\partial C^{(L)}}{\partial y_m^{(L)}} \\
+    \frac{\partial C}{\partial y_m} \\
 \end{bmatrix}
 $$
 
-In other words (once again dropping superscripts):
+In other words:
 $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
 
 Finally, we also need to compute $\frac{\partial C}{\partial X}$.
@@ -200,7 +200,7 @@ Finally, we also need to compute $\frac{\partial C}{\partial X}$.
 The reason why may not be obvious now, but we cannot compute $\frac{\partial C}{\partial Y}$ without it. The details to this will be explored in the third backprop. section, thus for now we will focus soley on the computation.
 
 Some input $x_n$ affects the entirety of the output vector $Y$. Thus we get the following:
-$$\Large \frac{\partial C^{(L)}}{\partial x_n^{}}\frac{\partial y_0^{(L)}}{\partial{x_n}}$$
+$$\Large \frac{\partial C}{\partial x_n}\frac{\partial y_0}{\partial x_n}$$
 
 
 
@@ -217,7 +217,7 @@ Given a set of inputs $X$ and outputs $Y$, the activation layer applies a functi
 While there are no parameters to tune, we still need the derivative of the the cost function with respect to the input. We will see in the next section why this is necessary but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
 
 Some element $x_n \in X$ undergoes transformation by function $f$ as previously stated. This then affects the corresponding output $y_n \in Y$, thus we can define the derivative of the cost with respect to some $x_n$ as:
-$$\Large \frac{\partial C^{(L)}}{\partial x_n^{(L)}}=\frac{\partial y_n^{(L)}}{\partial x_n^{(L)}}\frac{\partial C^{(L)}}{\partial y_n^{(L)}}$$
+$$\Large \frac{\partial C}{\partial x_n}=\frac{\partial y_n}{\partial x_n}\frac{\partial C}{\partial y_n}$$
 
 The first term is simply the derivative of the activation function $f$. Thus generalizing and simplifying as in the previous section:
 $$\boxed{\Huge \frac{\partial C}{\partial X}=\frac{\partial C}{\partial Y} \odot f'(X)}$$

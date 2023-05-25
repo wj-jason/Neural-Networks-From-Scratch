@@ -324,3 +324,13 @@ $$
 &=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})X^{{(1)}^T}
 \end{align*}
 $$
+
+And $B^{(1)}$:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial B^{(1)}}&=\Large \frac{\partial C}{\partial Y^{(1)}} \\
+\\
+&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
+\end{align*}
+$$

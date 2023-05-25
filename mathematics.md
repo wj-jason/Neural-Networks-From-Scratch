@@ -64,7 +64,7 @@ INSERT IMAGE HERE
 ## 4. Cost Function
 
 The cost (also referred to as loss or error) of some layer is the deviation from the expected output. Many functions can serve as cost functions, but we will be using the Mean Squared Error (MSE) function, defined as: 
-$$\Large C=\frac{1}{n}\sum_{i=0}^{n-1}(\hat{y}-y)^2$$
+$$\Large C=\frac{1}{n}\sum_{i=0}^{n-1}(\hat{y}_i-y_i)^2$$
 Where $\hat{y}$ is the actual or expected output value.
 
 ---

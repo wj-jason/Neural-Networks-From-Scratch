@@ -53,16 +53,18 @@ $$
 \end{bmatrix}
 $$
 
+While it's important to take note of the superscripts for layers, we will be dropping them from now on as all computations will be done within one layers reach thus all superscripts would be the same.
+
 ---
 
 ## 2. Forward Pass
 
-The forward pass refernces transformation of the input as it moves throughout the network. Each neuron from the input layer is connected to every single neuron in the output layer. Thus the value of some output neuron $y_m^{(L)}$ is given as a weighted sum of all neurons in the previous layer, plus the bias term for that neuron. 
-$$\Large y_m^{(L)}=(w_{m0}^{(L)}x_0^{(L-1)}+w_{m1}^{(L)}x_1^{(L-1)}w_{m2}^{(L)}x_2^{(L-1)}+ ... + w_{mn}^{(L)}x_n^{(L-1)})+b_m^{(L)}$$
+The forward pass refernces transformation of the input as it moves throughout the network. Each neuron from the input layer is connected to every single neuron in the output layer. Thus the value of some output neuron $y_m$ is given as a weighted sum of all neurons in the previous layer, plus the bias term for that neuron. 
+$$\Large y_m=(w_{m0}x_0+w_{m1}x_1w_{m2}x_2+ ... + w_{mn}x_n)+b_m$$
 Now doing this calculation for every neuron in the output layer wouldn't be too bad, but since we have defined weight matricies and bias vectors, we can store our inputs and outputs in column vectors and take a matrix vector product.
-$$\Large Y^{(L)}=W^{(L)}X^{(L-1)}+B^{(L)}$$
+$$\Large Y=WX+B$$
 Subsctiped with dimensionalities for clarity:
-$$\Large Y_{m \text{x} 1}^{(L)}=W_{m \text{x} n}^{(L)}X_{n \text{x} 1}^{(L-1)}+B_{m \text{x} 1}^{(L)}$$
+$$\Large Y_{m \text{x} 1}=W_{m \text{x} n}X_{n \text{x} 1}+B_{m \text{x} 1}$$
 Seeing how this might look for our previous two-layer example network:
 
 INSERT IMAGE HERE
@@ -93,7 +95,7 @@ Where $\hat{y}$ is the actual or expected output value.
 
 ## 5. Backpropagation 1
 
-Another way to refernce the forward pass is to say _forward propagation_. The given input _propogates_ throughout the network to produce some output.
+Another way to reference the forward pass is to say _forward propagation_. The given input _propogates_ throughout the network to produce some output.
 
 However as the name suggests, backpropagation is the opposite, and is the process of propogating backwards through the network to calculate the gradients of the cost function. 
 
@@ -102,55 +104,53 @@ Since the cost function is really just a huge function of the _learnable paramet
 This proccess is repeated in an iterative manner until the values converge to a local minimum.
 
 As previously stated, the learnable parameters are the weights and biases, so the goal is to find expressions for:
-$$\Large \frac{\partial C^{(L)}}{\partial W^{(L)}} \text{  and  } \frac{\partial C^{(L)}}{\partial B^{(L)}}$$
+$$\Large \frac{\partial C}{\partial W} \text{  and  } \frac{\partial C}{\partial B}$$
 
 We know that the weights and biases affect the outputs, which in turn affect the cost function. Thus we can use the chain rule to deduce the affects of the weights and biases on the cost.
-$$\Large \frac{\partial C^{(L)}}{\partial W^{(L)}}=\frac{\partial Y^{(L)}}{\partial W^{(L)}}\frac{\partial C^{(L)}}{\partial Y^{(L)}}$$
-$$\Large \frac{\partial C^{(L)}}{\partial B^{(L)}}=\frac{\partial Y^{(L)}}{\partial B^{(L)}}\frac{\partial C^{(L)}}{\partial Y^{(L)}}$$
-Starting with the first expression, we can define $\frac{\partial C^{(L)}}{\partial W^{(L)}}$ as follows:
+$$\Large \frac{\partial C}{\partial W}=\frac{\partial Y}{\partial W}\frac{\partial C}{\partial Y}$$
+$$\Large \frac{\partial C}{\partial B}=\frac{\partial Y}{\partial B}\frac{\partial C}{\partial Y}$$
+Starting with the first expression, we can define $\frac{\partial C}{\partial W}$ as follows:
 
 $$
-\Large \frac{\partial C^{(L)}}{\partial W^{(L)}}=
+\Large \frac{\partial C}{\partial W}=
 \begin{bmatrix}
-    \frac{\partial C^{(L)}}{\partial w_{00}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{01}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{02}^{(L)}} & \dots  & \frac{\partial C^{(L)}}{\partial w_{0n}^{(L)}} \\
-    \frac{\partial C^{(L)}}{\partial w_{10}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{11}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{12}^{(L)}} & \dots  & \frac{\partial C^{(L)}}{\partial w_{1n}^{(L)}} \\
+    \frac{\partial C}{\partial w_{00}} & \frac{\partial C}{\partial w_{01}} & \frac{\partial C}{\partial w_{02}} & \dots  & \frac{\partial C}{\partial w_{0n}} \\
+    \frac{\partial C}{\partial w_{10}} & \frac{\partial C}{\partial w_{11}} & \frac{\partial C}{\partial w_{12}} & \dots  & \frac{\partial C}{\partial w_{1n}} \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
-   \frac{\partial C^{(L)}}{\partial w_{m0}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{m1}^{(L)}} & \frac{\partial C^{(L)}}{\partial w_{m2}^{(L)}} & \dots  & \frac{\partial C^{(L)}}{\partial w_{mn}^{(L)}}
+   \frac{\partial C}{\partial w_{m0}} & \frac{\partial C}{\partial w_{m1}} & \frac{\partial C}{\partial w_{m2}} & \dots  & \frac{\partial C}{\partial w_{mn}}
 \end{bmatrix}
 $$
 
 Computing the first term:
 
-$$\Large \frac{\partial C^{(L)}}{\partial w_{00}^{(L)}}=\Large \frac{\partial Y^{(L)}}{\partial w_{00}^{(L)}}\frac{\partial C^{(L)}}{\partial Y^{(L)}}$$
+$$\Large \frac{\partial C}{\partial w_{00}}=\Large \frac{\partial Y}{\partial w_{00}}\frac{\partial C}{\partial Y}$$
 
 Which expands to: 
-$$\Large \frac{\partial y_0^{(L)}}{\partial w_{00}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}+\frac{\partial y_1^{(L)}}{\partial w_{00}^{(L)}}\frac{\partial C^{(L)}}{\partial y_1^{(L)}}+...+\frac{\partial y_m^{(L)}}{\partial w_{00}^{(L)}}\frac{\partial C^{(L)}}{\partial y_m^{(L)}}$$
+$$\Large \frac{\partial y_0}{\partial w_{00}}\frac{\partial C}{\partial y_0}+\frac{\partial y_1}{\partial w_{00}}\frac{\partial C}{\partial y_1}+...+\frac{\partial y_m}{\partial w_{00}}\frac{\partial C}{\partial y_m}$$
 
-But $w_{00}^{(L)}$ can only affect the neuron it is connected to, $y_0^{(L)}$. Thus we can simplify to:
-$$\Large \frac{\partial y_0^{(L)}}{\partial w_{00}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$
+But $w_{00}$ can only affect the neuron it is connected to, $y_0$. Thus we can simplify to:
+$$\Large \frac{\partial y_0}{\partial w_{00}}\frac{\partial C}{\partial y_0}$$
 
 The first term can be computed using the forward pass formula:
-$$\Large y_0^{(L)}=(w_{00}^{(L)}x_0^{(L-1)}+w_{01}^{(L)}x_1^{(L-1)}+ ... +w_{0n}^{(L)}x_n^{(L-1)})+b_0^{(L)} \implies \frac{\partial Y^{(L)}}{\partial w_{00}^{(L)}}=x_0^{(L-1)}$$
+$$\Large y_0=(w_{00}x_0+w_{01}x_1+ ... +w_{0n}x_n)+b_0 \implies \frac{\partial Y}{\partial w_{00}}=x_0$$
 
 Of course this is not a specfic result:
 
-$$\Large \frac{\partial C^{(L)}}{\partial w_{mn}^{(L)}}=\frac{\partial C^{(L)}}{\partial y_m^{(L)}}x_n^{(L-1)}$$
+$$\Large \frac{\partial C}{\partial w_{mn}}=\frac{\partial C}{\partial y_m}x_n$$
 
 And so the matrix expands to:
 
 $$
-\Large \frac{\partial C^{(L)}}{\partial W^{(L)}}=
+\Large \frac{\partial C}{\partial W}=
 \begin{bmatrix}
-    \frac{\partial C^{(L)}}{\partial y_0^{(L)}}x_0^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_0^{(L)}}x_1^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_0^{(L)}}x_2^{(L-1)} & \dots  & \frac{\partial C^{(L)}}{\partial y_0^{(L)}}x_n^{(L-1)} \\
-    \frac{\partial C^{(L)}}{\partial y_1^{(L)}}x_0^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_1^{(L)}}x_1^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_1^{(L)}}x_2^{(L-1)} & \dots  & \frac{\partial C^{(L)}}{\partial y_1^{(L)}}x_n^{(L-1)} \\
+    \frac{\partial C}{\partial y_0}x_0 & \frac{\partial C}{\partial y_0}x_1 & \frac{\partial C}{\partial y_0}x_2 & \dots  & \frac{\partial C}{\partial y_0}x_n \\
+    \frac{\partial C}{\partial y_1}x_0 & \frac{\partial C}{\partial y_1}x_1 & \frac{\partial C}{\partial y_1}x_2 & \dots  & \frac{\partial C}{\partial y_1}x_n \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
-   \frac{\partial C^{(L)}}{\partial y_m^{(L)}}x_0^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_m^{(L)}}x_1^{(L-1)} & \frac{\partial C^{(L)}}{\partial y_m^{(L)}}x_2^{(L-1)} & \dots  & \frac{\partial C^{(L)}}{\partial y_m^{(L)}}x_n^{(L-1)}
+   \frac{\partial C}{\partial y_m}x_0 & \frac{\partial C}{\partial y_m}x_1 & \frac{\partial C}{\partial y_m}x_2 & \dots  & \frac{\partial C}{\partial y_m}x_n
 \end{bmatrix}
 $$
 
-Which is equivalent to the following matrix vector product:
-$$\Large \frac{\partial C^{(L)}}{\partial Y^{(L)}}X^{{(L)}^{T}}$$
-Dropping the superscripts since everythings in the same layer (and so it looks a little prettier):
+Which can be written as a matrix vector product, yeilding the following result:
 $$\boxed{\Huge \frac{\partial C}{\partial W}=\frac{\partial C}{\partial Y}X^T}$$
 
 The proccess for $\frac{\partial C}{\partial B}$ is essentially the exact same. 
@@ -158,18 +158,18 @@ The proccess for $\frac{\partial C}{\partial B}$ is essentially the exact same.
 The target result is a column vector as such:
 
 $$
-\Large \frac{\partial C^{(L)}}{\partial B^{(L)}}=
+\Large \frac{\partial C}{\partial B}=
 \begin{bmatrix}
-    \frac{\partial C^{(L)}}{\partial b_0^{(L)}} \\
-    \frac{\partial C^{(L)}}{\partial b_1^{(L)}} \\
+    \frac{\partial C}{\partial b_0} \\
+    \frac{\partial C}{\partial b_1} \\
     \vdots \\
-    \frac{\partial C^{(L)}}{\partial b_m^{(L)}} \\
+    \frac{\partial C}{\partial b_m} \\
 \end{bmatrix}
 $$
 
 Following a similar process to the weights:
 
-$$\Large \frac{\partial C^{(L)}}{\partial b_{0}^{(L)}}=\frac{\partial y_0^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}+\frac{\partial y_1^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_1^{(L)}}+...+\frac{\partial y_m^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_m^{(L)}}$$
+$$\Large \frac{\partial C}{\partial b_{0}}=\frac{\partial y_0}{\partial b_{0}}\frac{\partial C}{\partial y_0}+\frac{\partial y_1}{\partial b_{0}}\frac{\partial C}{\partial y_1}+...+\frac{\partial y_m}{\partial b_{0}}\frac{\partial C}{\partial y_m}$$
 
 Which simplifies in the same fashion, as $b_0$ only affects one neuron:
 $$\Large \frac{\partial y_0^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$

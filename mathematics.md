@@ -280,5 +280,38 @@ INSERT IMAGE HERE
 
 We start by computing the derivative of the cost with respect to the final output, who's expected value is simply the ground truth label for the data. From there, we can _propogate backward_ computing every term we need.
 
-For a network with one hidden layer:
+For a network with one hidden layer starting with the output of the final layer $Y^{(2)}$:
+$$\Large \frac{\partial C}{\partial Y^{(2)}}=\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})$$
+
+We can now compute the gradient of $W^{(2)}$ using the formula we derived above:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial W^{(2)}}&=\Large \frac{\partial C}{\partial Y^{(2)}}X^{{(2)}^T} \\
+\\
+&=\Large \frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})X^{{(2)}^T}
+\end{align*}
+$$
+
+Repeating for $B^{(2)}$:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial B^{(2)}}&=\Large \frac{\partial C}{\partial Y^{(2)}} \\
+\\
+&=\Large \frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
+\end{align*}
+$$
+
+Now comes the key step where we compute $\frac{\partial C}{\partial X^{(2)}}$.
+
+It is important since this $\frac{\partial C}{\partial X^{(2)}}=\frac{\partial C}{\partial Y^{(1)}}$ allowing us to continue backpropagation:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial X^{(2)}}&=\Large W^{{(2)}^T}\frac{\partial C}{\partial Y^{(2)}} \\
+\\
+&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
+\end{align*}
+$$
 

@@ -6,8 +6,10 @@ It will be broken up into the following sections:
 2. Forward Pass
 3. Activation Layers
 4. Cost Function
-5. Backpropagation
-6. Gradient Descent
+5. Backpropagation 1
+6. Backpropagation 2
+7. Backpropagation 3
+8. Gradient Descent
 
 ---
 
@@ -89,7 +91,7 @@ Where $\hat{y}$ is the actual or expected output value.
 
 ---
 
-## 5. Backpropagation
+## 5. Backpropagation 1
 
 Another way to refernce the forward pass is to say _forward propagation_. The given input _propogates_ throughout the network to produce some output.
 
@@ -192,3 +194,22 @@ $$
 
 In other words (once again dropping superscripts):
 $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
+
+---
+
+## 6. Backpropagation 2
+
+So now we have our formulas for backpropagation on the forward pass, but what about the activation layers?
+
+Luckily this is much simpler, since all the activation layer does is pass the input through a pre-defined non-linear function. 
+
+Given a set of inputs $X$ and outputs $Y$, the activation layer applies a function $f$ element-wise to each component of $X$. That is, $Y=f(X)$
+
+While there are no parameters to tune, we still need the derivative of the the cost function with respect to the input. We will see in the next section why this is necessary but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
+
+Some element $x_n \in X$ undergoes transformation by function $f$ as previously stated. This then affects the corresponding output $y_n \in Y$, thus we can define the derivative of the cost with respect to some $x_n$ as:
+$$\Large \frac{\partial C^{(L)}}{\partial x_n^{(L)}}=\frac{\partial y_n^{(L)}}{\partial x_n^{(L)}}\frac{\partial C^{(L)}}{\partial y_n^{(L)}}$$
+
+The first term is simply the derivative of the activation function $f$. Thus generalizing and simplifying as in the previous section:
+$$\boxed{\Huge \frac{\partial C}{\partial X}=\frac{\partial C}{\partial Y} \odot f'(X)}$$
+

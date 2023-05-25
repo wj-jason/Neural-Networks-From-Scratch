@@ -315,3 +315,12 @@ $$
 \end{align*}
 $$
 
+Continuing on to compute the gradient of $W^{(1)}$:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial W^{(1)}}&=\Large \frac{\partial C}{\partial Y^{(1)}}X^{{(1)}^T} \\
+\\
+&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})X^{{(1)}^T}
+\end{align*}
+$$

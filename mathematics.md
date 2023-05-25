@@ -23,13 +23,31 @@ In order to refernce individual activations within the neurons, we will use lowe
 
 INSERT IMAGE HERE
 
-Each connection (called a _weight_) will be indexed similar to the neurons. An indiviudal weight $w$ will have a superscript denoting the layer it is _going_ to, with two subscripts denoting the neuron in the next layer it is connected to, followed by the neuron it comes from. Letting the input layer be $i$, and output be $j$, an arbitrary weight is indexed as $w_{ji}^{(L)}$ where $j$ is layer $L$. 
+Each connection (called a _weight_) will be indexed similar to the neurons. An indiviudal weight $w$ will have a superscript denoting the layer it is _going_ to, with two subscripts denoting the neuron in the next layer it is connected to, followed by the neuron it comes from. Letting the input layer be $n$, and output be $m$, an arbitrary weight is indexed as $w_{mn}^{(L)}$ where $m$ is layer $L$. 
 
 These weights are then stored in a weight matrix $W^{(L)}$ as follows:
 
-INSERT IMAGE HERE
+$$
+\Large W^{(L)}=
+\begin{bmatrix}
+    w_{00}^{(L)} & w_{01}^{(L)} & w_{02}^{(L)} & \dots  & w_{0n}^{(L)} \\
+    w_{10}^{(L)} & w_{11}^{(L)} & w_{12}^{(L)} & \dots  & w_{1n}^{(L)} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    w_{m0}^{(L)} & w_{m1}^{(L)} & w_{m2}^{(L)} & \dots  & w_{mn}^{(L)}
+\end{bmatrix}
+$$
 
 We can also define a _bias_ term $b$ in the same way as the weight, however only requiring one subscript denoting which neuron it acts on. Then an arbtirary weight in layer $L$ is denoted as $b_n^{(L)}$ with the bias column vector being notated as $B^{(L)}$. 
+
+$$
+\Large B^{(L)}=
+\begin{bmatrix}
+    b_{0}^{(L)} \\
+    b_{1}^{(L)}\\
+    \vdots \\
+    b_{m}^{(L)}
+\end{bmatrix}
+$$
 
 ---
 

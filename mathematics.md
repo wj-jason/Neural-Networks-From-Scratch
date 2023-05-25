@@ -213,3 +213,19 @@ $$\Large \frac{\partial C^{(L)}}{\partial x_n^{(L)}}=\frac{\partial y_n^{(L)}}{\
 The first term is simply the derivative of the activation function $f$. Thus generalizing and simplifying as in the previous section:
 $$\boxed{\Huge \frac{\partial C}{\partial X}=\frac{\partial C}{\partial Y} \odot f'(X)}$$
 
+Where $\odot$ represents element-wise multiplication
+
+---
+
+## 7. Backpropagation 3
+
+Finally with all these formulas, we can see how to actually put them into play. 
+
+As previously mentioned, the outputs of one layer serve as the inputs to another in the forward pass, thus we can use the derivative of the output to find the derivative of the input. 
+
+INSERT IMAGE HERE
+
+We start by computing the derivative of the cost with respect to the final output, who's expected value is simply the ground truth label for the data. From there, we can _propogate backward_ computing every term we need.
+
+For a network with one hidden layer:
+

@@ -150,17 +150,45 @@ Which is equivalent to the following matrix vector product:
 $$\Large \frac{\partial C^{(L)}}{\partial Y^{(L)}}X^{{(L)}^{T}}$$
 Dropping the superscripts since everythings in the same layer (and so it looks a little prettier):
 $$\boxed{\Huge \frac{\partial C}{\partial W}=\frac{\partial C}{\partial Y}X^T}$$
+
 The proccess for $\frac{\partial C}{\partial B}$ is essentially the exact same. 
 
-Remember $B$ is a column vector with the same dimensionality as $Y$:
+The target result is a column vector as such:
+
+$$
+\Large \frac{\partial C^{(L)}}{\partial B^{(L)}}=
+\begin{bmatrix}
+    \frac{\partial C^{(L)}}{\partial b_0^{(L)}} \\
+    \frac{\partial C^{(L)}}{\partial b_1^{(L)}} \\
+    \vdots \\
+    \frac{\partial C^{(L)}}{\partial b_m^{(L)}} \\
+\end{bmatrix}
+$$
+
+Following a similar process to the weights:
+
 $$\Large \frac{\partial C^{(L)}}{\partial b_{0}^{(L)}}=\frac{\partial y_0^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}+\frac{\partial y_1^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_1^{(L)}}+...+\frac{\partial y_m^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_m^{(L)}}$$
+
 Which simplifies in the same fashion, as $b_0$ only affects one neuron:
 $$\Large \frac{\partial y_0^{(L)}}{\partial b_{0}^{(L)}}\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$
+
 But referring back to the forward pass formula, every bias is simply a constant, thus it's derivative is $1$:
 $$\Large \frac{\partial C^{(L)}}{\partial b_{0}^{(L)}}=\frac{\partial C^{(L)}}{\partial y_0^{(L)}}$$
+
 Generalizing:
 $$\Large \frac{\partial C^{(L)}}{\partial b_{m}^{(L)}}=\frac{\partial C^{(L)}}{\partial y_m^{(L)}}$$
-Thus the column vector describing the derivatives of each bias on the cost is given simply by:
+
+Thus the vector is now:
+
+$$
+\Large \frac{\partial C^{(L)}}{\partial B^{(L)}}=
+\begin{bmatrix}
+    \frac{\partial C^{(L)}}{\partial y_0^{(L)}} \\
+    \frac{\partial C^{(L)}}{\partial y_1^{(L)}} \\
+    \vdots \\
+    \frac{\partial C^{(L)}}{\partial y_m^{(L)}} \\
+\end{bmatrix}
+$$
+
+In other words (once again dropping superscripts):
 $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
-
-

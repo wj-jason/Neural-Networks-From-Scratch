@@ -197,12 +197,56 @@ $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
 
 Finally, we also need to compute $\frac{\partial C}{\partial X}$.
 
-The reason why may not be obvious now, but we cannot compute $\frac{\partial C}{\partial Y}$ without it. The details to this will be explored in the third backprop. section, thus for now we will focus soley on the computation.
+The reason why may not be obvious now, but we cannot compute $\frac{\partial C}{\partial Y}$ without it. The details to this will be explored in the third backpropagation section, but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
+
+Just as the biases, the target is a column vector:
+
+$$
+\Large \frac{\partial C}{\partial X}=
+\begin{bmatrix}
+    \frac{\partial C}{\partial x_0} \\
+    \frac{\partial C}{\partial x_1} \\
+    \vdots \\
+    \frac{\partial C}{\partial x_n} \\
+\end{bmatrix}
+$$
 
 Some input $x_n$ affects the entirety of the output vector $Y$. Thus we get the following:
-$$\Large \frac{\partial C}{\partial x_n}\frac{\partial y_0}{\partial x_n}$$
+$$\Large \frac{\partial C}{\partial x_n}=\frac{\partial y_0}{\partial x_n}\frac{\partial C}{\partial y_0}+\frac{\partial y_1}{\partial x_n}\frac{\partial C}{\partial y_1}+...+\frac{\partial y_m}{\partial x_n}\frac{\partial C}{\partial y_m}$$
 
+Now unlike the weights and biases, the input neuron affects every output neuron. 
 
+Once again, referring back to the forward pass, $x_n$ appears with coefficeint $w_{mn}$ for all $m$. 
+
+Thus the derivative works out as:
+$$\Large \frac{\partial C}{\partial x_n}=\frac{\partial C}{\partial y_0}w_{0n}+\frac{\partial C}{\partial y_1}w_{1n}+...+\frac{\partial C}{\partial y_m}w_{mn}$$
+
+Applying the formula we have just derived to the target vector:
+
+$$
+\Large \frac{\partial C}{\partial B}=
+\begin{bmatrix}
+    \frac{\partial C}{\partial y_0}w_{00}+\frac{\partial C}{\partial y_1}w_{10}+...+\frac{\partial C}{\partial y_m}w_{m0} \\
+    \frac{\partial C}{\partial y_0}w_{01}+\frac{\partial C}{\partial y_1}w_{11}+...+\frac{\partial C}{\partial y_m}w_{m1} \\
+    \vdots \\
+    \frac{\partial C}{\partial y_0}w_{0n}+\frac{\partial C}{\partial y_1}w_{1n}+...+\frac{\partial C}{\partial y_m}w_{mn} \\
+\end{bmatrix}
+$$
+
+Which once again, is a matrix vector product, thus the final result is:
+$$\boxed{\Huge \frac{\partial C}{\partial X}=W^T\frac{\partial C}{\partial Y}}$$
+
+To finally conclude this section, let's look at the three expressions we have derived:
+
+$$
+\begin{align*}
+\Huge \frac{\partial C}{\partial W}&=\Huge \frac{\partial C}{\partial Y}X^T \\
+\\
+\Huge \frac{\partial C}{\partial B}&=\Huge \frac{\partial C}{\partial Y} \\
+\\
+\Huge \frac{\partial C}{\partial X}&=\Huge W^T\frac{\partial C}{\partial Y}
+\end{align*}
+$$
 
 ---
 
@@ -214,7 +258,7 @@ Luckily this is much simpler, since all the activation layer does is pass the in
 
 Given a set of inputs $X$ and outputs $Y$, the activation layer applies a function $f$ element-wise to each component of $X$. That is, $Y=f(X)$
 
-While there are no parameters to tune, we still need the derivative of the the cost function with respect to the input. We will see in the next section why this is necessary but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
+While there are no parameters to tune, we still need the derivative of the the cost function with respect to the input. 
 
 Some element $x_n \in X$ undergoes transformation by function $f$ as previously stated. This then affects the corresponding output $y_n \in Y$, thus we can define the derivative of the cost with respect to some $x_n$ as:
 $$\Large \frac{\partial C}{\partial x_n}=\frac{\partial y_n}{\partial x_n}\frac{\partial C}{\partial y_n}$$

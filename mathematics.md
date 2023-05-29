@@ -8,8 +8,8 @@ It will be broken up into the following sections:
 4. Cost Function
 5. Backpropagation 1
 6. Backpropagation 2
-7. Backpropagation 3
-8. Gradient Descent
+7. Gradient Descent
+8. Example Network
 
 ---
 
@@ -274,71 +274,100 @@ Where $\odot$ represents element-wise multiplication
 
 ---
 
-## 7. Backpropagation 3
+## 7. Gradient Descent
 
-Finally with all these formulas, we can see how to actually put them into play. 
+Now that we have all the derivatives, we can begin the "learning" process.
 
-As previously mentioned, the outputs of one layer serve as the inputs to another in the forward pass, thus we can use the derivative of the output to find the derivative of the input. 
+There term "learning" refers to the minimization of the cost function by adjusting our learnable parameters against the gradients, which we have computed.
+
+The formula for gradient descent for some matrix / vector of learnable parameters $\theta$ is given as:
+$$\Large \theta:=\theta-\alpha\frac{\partial C}{\partial \theta}$$
+
+Where $\alpha$ is the _learning rate_, or in other words the amount the parameters are adjusted by. 
+
+---
+
+## 8. Example Network
+
+We now have all the tools required to set up a basic neural network! For this example, we will keep it extremely simplified, however all the concepts generalize without issues. 
+
+The network we will be looking at will have the follwing architecture:
+
+INSERT IMAGE HERE
+
+Where layer $1$ is an activation layer, made evident by the single connections.
+
+We can observe the inputs and outputs through the forward pass as follows:
 
 INSERT IMAGE HERE
 
-We start by computing the derivative of the cost with respect to the final output, who's expected value is simply the ground truth label for the data. From there, we can _propogate backward_ computing every term we need.
-
-For a network with one hidden layer starting with the output of the final layer $Y^{(2)}$:
-$$\Large \frac{\partial C}{\partial Y^{(2)}}=\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})$$
-
-We can now compute the gradient of $W^{(2)}$ using the formula we derived above:
-
-$$
-\begin{align*}
-\Large \frac{\partial C}{\partial W^{(2)}}&=\Large \frac{\partial C}{\partial Y^{(2)}}X^{{(2)}^T} \\
-\\
-&=\Large \frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})X^{{(2)}^T}
-\end{align*}
-$$
-
-Repeating for $B^{(2)}$:
-
-$$
-\begin{align*}
-\Large \frac{\partial C}{\partial B^{(2)}}&=\Large \frac{\partial C}{\partial Y^{(2)}} \\
-\\
-&=\Large \frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
-\end{align*}
-$$
-
-Now comes the key step where we compute $\frac{\partial C}{\partial X^{(2)}}$.
-
-It is important since this $\frac{\partial C}{\partial X^{(2)}}=\frac{\partial C}{\partial Y^{(1)}}$ allowing us to continue backpropagation:
-
-$$
-\begin{align*}
-\Large \frac{\partial C}{\partial X^{(2)}}&=\Large W^{{(2)}^T}\frac{\partial C}{\partial Y^{(2)}} \\
-\\
-&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
-\end{align*}
-$$
-
-Continuing on to compute the gradient of $W^{(1)}$:
-
-$$
-\begin{align*}
-\Large \frac{\partial C}{\partial W^{(1)}}&=\Large \frac{\partial C}{\partial Y^{(1)}}X^{{(1)}^T} \\
-\\
-&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})X^{{(1)}^T}
-\end{align*}
-$$
-
-And $B^{(1)}$:
-
-$$
-\begin{align*}
-\Large \frac{\partial C}{\partial B^{(1)}}&=\Large \frac{\partial C}{\partial Y^{(1)}} \\
-\\
-&=\Large W^{{(2)}^T}\frac{2}{n}(Y^{(2)}-\hat{Y}^{(2)})
-\end{align*}
-$$
-
-But what if there's an activation layer?
+And we can see which values we need to compute on backpropagation:
 
 INSERT IMAGE HERE
+
+Note there are no extra computations on $\frac{\partial C}{\partial Y^{(1)}}$ since it is an activation layer, and has no learnable parameters.
+
+Now starting the computations, the output $Y^{(2)}$ can be used to begin the backpropagation cycle:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial Y^{(2)}}&=\Large 2(Y-\hat{Y}) \\
+\\
+\Large \implies \frac{\partial C}{\partial W^{(2)}}&=\Large 2(Y-\hat{Y})X^{{(2)}^T} \\
+\\
+\Large \implies \frac{\partial C}{\partial B^{(2)}}&=\Large 2(Y-\hat{Y}) \\
+\\
+\Large \implies \frac{\partial C}{\partial X^{(2)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y})
+\end{align*}
+$$
+
+We know $\frac{\partial C}{\partial X^{(2)}}=\frac{\partial C}{\partial Y^{(1)}}$, so:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial Y^{(1)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y}) \\
+\\
+\Large \implies \frac{\partial C}{\partial X^{(1)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y}) \odot \sigma '(X^{(1)})
+\end{align*}
+$$
+
+Once again, $\frac{\partial C}{\partial X^{(1)}}=\frac{\partial C}{\partial Y^{(0)}}$, so:
+
+$$
+\begin{align*}
+\Large \frac{\partial C}{\partial Y^{(0)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y}) \odot \sigma '(X^{(1)}) \\
+\\
+\Large \implies \frac{\partial C}{\partial W^{(0)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y}) \odot \sigma '(X^{(1)})X^{{(0)}^T} \\
+\\
+\Large \implies \frac{\partial C}{\partial B^{(0)}}&=\Large W^{{(2)}^T}2(Y-\hat{Y}) \odot \sigma '(X^{(1)})
+\end{align*}
+$$
+
+There is no need to compute $\frac{\partial C}{\partial X^{(0)}}$, so we are done!
+
+From here, we can update our parameters as follows:
+
+$$
+\begin{align*}
+\Large W^{(2)}&:=\Large W^{(2)}-\alpha\frac{\partial C}{\partial W^{(2)}}\\
+\\
+\Large &:=\Large W^{(2)}-\Large \alpha \cdot 2(Y-\hat{Y})X^{{(2)}^T} \\
+\\
+\\
+\Large B^{(2)}&:=\Large B^{(2)}-\alpha \frac{\partial C}{\partial B^{(2)}}\\
+\\
+\Large &:=\Large W^{(2)}-\Large \alpha \cdot2(Y-\hat{Y}) \\
+\\
+\\
+\Large W^{(0)}&:=\Large W^{(0)}-\alpha\frac{\partial C}{\partial W^{(0)}}\\
+\\
+\Large &:=\Large W^{(0)}-\Large \alpha \cdot W^{{(2)}^T}2(Y-\hat{Y}) \odot \sigma '(X^{(1)})X^{{(0)}^T} \\
+\\
+\\
+\Large B^{(0)}&:=\Large B^{(0)}-\alpha\frac{\partial C}{\partial B^{(0)}}\\
+\\
+\Large &:=\Large B^{(0)}-\Large \alpha \cdot 2(Y-\hat{Y}) \odot \sigma '(X^{(1)})X^{{(0)}^T} \\
+\end{align*}
+$$
+
+And that is the complete learning process for a neural network!

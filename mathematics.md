@@ -27,7 +27,9 @@ In order to refernce individual activations within the neurons, we will use lowe
 
 INSERT IMAGE HERE
 
-Each connection (called a _weight_) will be indexed similar to the neurons. An indiviudal weight $w$ will have a superscript denoting the layer it is _going_ to, with two subscripts denoting the neuron in the next layer it is connected to, followed by the neuron it comes from. Letting the input layer be $n$, and output be $m$, an arbitrary weight is indexed as $w_{mn}^{(L)}$ where $m$ is layer $L$. 
+Each connection (called a _weight_) will be indexed similar to the neurons. An indiviudal weight $w$ will have a superscript denoting the layer it's in with two subscripts denoting the neuron it is connected to, followed by the neuron it comes from. Letting the input neuron be $n$, and output be $m$, an arbitrary weight is indexed as $w_{mn}^{(L)}$.
+
+INSERT IMAGE HERE
 
 These weights are then stored in a weight matrix $W^{(L)}$ as follows:
 

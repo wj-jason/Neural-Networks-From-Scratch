@@ -21,15 +21,15 @@ Starting with the layers themselves, they will be indexing starting from $L=0$. 
 
 For example, in order to reference the inputs, $X$ of layer $0$, it would be notated $X^{(0)}$ (this is a brief allusion to the next section on the forward pass, but $X$ and $Y$ are column vectors holding the inputs and outputs of each neuron in a particular layer). The outputs of layer $0$ are then notated as $Y^{(0)}$, which as we will see soon, act as the next layers inputs. That is, $Y^{(0)}=X^{(1)}$.
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_0.png>
 
 In order to refernce individual activations within the neurons, we will use lowercase $x$ and $y$. These will have both superscipts describing the layer they are in, as well as subscripts denoting the position within the layer. These subscripts will also begin from 0, and are ordered from the top down. 
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_1.png>
 
 Each connection (called a _weight_) will be indexed similar to the neurons. An indiviudal weight $w$ will have a superscript denoting the layer it's in with two subscripts denoting the neuron it is connected to, followed by the neuron it comes from. Letting the input neuron be $n$, and output be $m$, an arbitrary weight is indexed as $w_{mn}^{(L)}$.
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_2.png>
 
 These weights are then stored in a weight matrix $W^{(L)}$ as follows:
 
@@ -69,11 +69,11 @@ Subsctiped with dimensionalities for clarity:
 $$\Large Y_{m \text{x} 1}=W_{m \text{x} n}X_{n \text{x} 1}+B_{m \text{x} 1}$$
 Seeing how this might look for our previous example network:
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_3.png>
 
 It can now be seen how the outputs for one layer act as the inputs for the next, thus the forward pass through the entire network is only a matter of recursively computing this matrix vector product with each layer. $X$ for one layer produces $Y$ for that layer, which acts as the next $X$ producing another $Y$ and so on. 
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_4.png>
 
 ---
 
@@ -85,7 +85,7 @@ $$\Large \sigma(x)=\frac{1}{1+e^{-x}}$$
 $$\Large \arctan(x)$$
 The use is fairly simple. Between each hidden layer (layers between initial input and final output), a non-linear function is added. This function acts on the column vector outputted by the previous layer, applying the non-linear function.
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_5.png>
 
 ---
 
@@ -293,17 +293,17 @@ We now have all the tools required to set up a basic neural network! For this ex
 
 The network we will be looking at will have the follwing architecture:
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_6.png>
 
 Where layer $1$ is an activation layer, made evident by the single connections.
 
 We can observe the inputs and outputs through the forward pass as follows:
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_7.png>
 
 And we can see which values we need to compute on backpropagation:
 
-INSERT IMAGE HERE
+<img src=/images/mathematics/fig_8.png>
 
 Note there are no extra computations on $\frac{\partial C}{\partial Y^{(1)}}$ since it is an activation layer, and has no learnable parameters.
 

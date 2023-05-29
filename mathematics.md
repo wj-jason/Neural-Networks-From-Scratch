@@ -73,6 +73,8 @@ INSERT IMAGE HERE
 
 It can now be seen how the outputs for one layer act as the inputs for the next, thus the forward pass through the entire network is only a matter of recursively computing this matrix vector product with each layer. $X$ for one layer produces $Y$ for that layer, which acts as the next $X$ producing another $Y$ and so on. 
 
+INSERT IMAGE HERE
+
 ---
 
 ## 3. Activation Layers

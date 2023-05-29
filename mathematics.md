@@ -67,7 +67,7 @@ Now doing this calculation for every neuron in the output layer wouldn't be too 
 $$\Large Y=WX+B$$
 Subsctiped with dimensionalities for clarity:
 $$\Large Y_{m \text{x} 1}=W_{m \text{x} n}X_{n \text{x} 1}+B_{m \text{x} 1}$$
-Seeing how this might look for our previous two-layer example network:
+Seeing how this might look for our previous example network:
 
 INSERT IMAGE HERE
 

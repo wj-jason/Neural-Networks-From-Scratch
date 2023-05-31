@@ -1,7 +1,7 @@
 # Math $\rightarrow$ Python
 
 - [`layers.py`](#layerspy---contents)
-- [`error_functions.py`](#error_functionspy---contents)
+- [error_functions.py](#error_functionspy---contents)
 - [`run.py`](#runpy---contents)
 - [`main.py`](#mainpy---contents)
 

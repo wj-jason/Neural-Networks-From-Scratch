@@ -1,15 +1,13 @@
 # The Mathematics Behind Neural Networks
 
-This section will cover all the relavent math for a non-linear binary classifier. <br>
-It will be broken up into the following sections:
-1. Indexing
-2. Forward Pass
-3. Activation Layers
-4. Cost Function
-5. Backpropagation 1
-6. Backpropagation 2
-7. Gradient Descent
-8. Example Network
+1. [Indexing](#1-indexing)
+2. [Forward Pass](#2-forward-pass)
+3. [Activation Layers](#3-activation-layers)
+4. [Cost Function](#4-cost-function)
+5. [Backpropagation 1](#5-backpropagation-1)
+6. [Backpropagation 2](#6-backpropagation-2)
+7. [Gradient Descent](#7-gradient-descent)
+8. [Example Network](#8-example-network)
 
 ---
 

@@ -1,7 +1,5 @@
 # Math $\rightarrow$ Python
 
-This section will breifly outline the various python scripts within this directory!
-
 ## `layers.py`
 
 Starting with `layers.py`, we initalize a base class `Layer` that each subsequent layer can inherit from. This class is abstract, defining forward and backward functions to later be overwritten with the relavent foward pass and backpropagation formulas depending on the type of layer. 
@@ -59,6 +57,8 @@ class Activation(Layer):
 
 The activation layer is much simpler than the linear layer, as it's forward pass simply applies a function element-wise on the input vector, and it's backpropagation pass multiplies the output gradient by the derivative of the activation, also element-wise. 
 
+---
+
 ## `error_functions.py`
 
 Next, we will need to create our error function, as well as it's derivative. Since we are using MSE (mean squared error), this process is fairly simple:
@@ -70,6 +70,8 @@ def MSE(y_true, y_pred):
 def MSE_prime(y_true, y_pred):
     return 2 * (y_pred - y_true) / np.size(y_true)
 ```
+
+---
 
 ## `run.py`
 
@@ -183,6 +185,8 @@ def run(network, X, Y, error_func, error_prime, epochs, learning_rate):
     error /= len(X)
     print(f'Test Error: {error}\n')
 ```
+
+---
 
 ## `main.py`
 

@@ -230,6 +230,6 @@ Finally calling `run()` on our network as such:
 run(network, X_train, Y_train, MSE, MSE_prime, epochs, learning_rate)
 ```
 
-Produces the folliwng output:
+Produces the following output:
 
 ![image](https://github.com/wj-jason/Neural-Networks-From-Scratch/assets/116098777/afd24887-620f-4979-b1c2-b8d1ab7b48ec)

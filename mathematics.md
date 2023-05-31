@@ -1,6 +1,6 @@
 # The Mathematics Behind Neural Networks
 
-1. [Indexing](#1-indexing)
+1. [Indexing](#1-indexing---contents)
 2. [Forward Pass](#2-forward-pass)
 3. [Activation Layers](#3-activation-layers)
 4. [Cost Function](#4-cost-function)
@@ -11,7 +11,7 @@
 
 ---
 
-## 1. Indexing
+## 1. Indexing -[contents](#the-mathematics-behind-neural-networks)
 
 Before diving into the actual math, we need to ensure that there are no ambiguities with respect to what part of the neural net is being referenced.
 

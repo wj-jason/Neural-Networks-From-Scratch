@@ -97,7 +97,7 @@ Where $\hat{y}$ is the actual or expected output value.
 
 ## 5. Backpropagation 1 - [contents](#the-mathematics-behind-neural-networks)
 
-Another way to reference the forward pass is to say _forward propagation_. The given input _propogates_ throughout the network to produce some output.
+Another way to reference the forward pass is to say _forward propagation_. The given input _propagates_ throughout the network to produce some output.
 
 However as the name suggests, backpropagation is the opposite, and is the process of propogating backwards through the network to calculate the gradients of the cost function. 
 
@@ -111,7 +111,7 @@ $$\Large \frac{\partial C}{\partial W} \text{  and  } \frac{\partial C}{\partial
 We know that the weights and biases affect the outputs, which in turn affect the cost function. Thus we can use the chain rule to deduce the affects of the weights and biases on the cost.
 $$\Large \frac{\partial C}{\partial W}=\frac{\partial Y}{\partial W}\frac{\partial C}{\partial Y}$$
 $$\Large \frac{\partial C}{\partial B}=\frac{\partial Y}{\partial B}\frac{\partial C}{\partial Y}$$
-Starting with the first expression, we can define $\frac{\partial C}{\partial W}$ as follows:
+Starting with the first expression, we can define $\displaystyle{\frac{\partial C}{\partial W}}$ as follows:
 
 $$
 \Large \frac{\partial C}{\partial W}=
@@ -155,7 +155,7 @@ $$
 Which can be written as a matrix vector product, yeilding the following result:
 $$\boxed{\Huge \frac{\partial C}{\partial W}=\frac{\partial C}{\partial Y}X^T}$$
 
-The proccess for $\frac{\partial C}{\partial B}$ is essentially the exact same. 
+The proccess for $\displaystyle{\frac{\partial C}{\partial B}}$ is essentially the exact same. 
 
 The target result is a column vector as such:
 
@@ -197,9 +197,9 @@ $$
 In other words:
 $$\boxed{\Huge \frac{\partial C}{\partial B}=\frac{\partial C}{\partial Y}}$$
 
-Finally, we also need to compute $\frac{\partial C}{\partial X}$.
+Finally, we also need to compute $\displaystyle{\frac{\partial C}{\partial X}}$.
 
-The reason why may not be obvious now, but we cannot compute $\frac{\partial C}{\partial Y}$ without it. The details to this will be explored in the third backpropagation section, but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
+The reason why may not be obvious now, but we cannot compute $\displaystyle{\frac{\partial C}{\partial Y}}$ without it. The details to this will be explored in the third backpropagation section, but to summarize, in order to compute the derivative of cost with respect to the output (as we do for the weights and biases), we can use the inputs of the next layer as the inputs of layer $L+1$ are the outputs of layer $L$. 
 
 Just as the biases, the target is a column vector:
 
@@ -303,7 +303,7 @@ And we can see which values we need to compute on backpropagation:
 
 <img src=/images/mathematics/fig_8.png width=500>
 
-Note there are no extra computations on $\frac{\partial C}{\partial Y^{(1)}}$ since it is an activation layer, and has no learnable parameters.
+Note there are no extra computations on $\displaystyle{\frac{\partial C}{\partial Y^{(1)}}}$ since it is an activation layer, and has no learnable parameters.
 
 Now starting the computations, the output $Y^{(2)}$ can be used to begin the backpropagation cycle:
 
@@ -319,7 +319,7 @@ $$
 \end{align*}
 $$
 
-We know $\frac{\partial C}{\partial X^{(2)}}=\frac{\partial C}{\partial Y^{(1)}}$, so:
+We know $\displaystyle{\frac{\partial C}{\partial X^{(2)}}=\frac{\partial C}{\partial Y^{(1)}}}$, so:
 
 $$
 \begin{align*}
@@ -329,7 +329,7 @@ $$
 \end{align*}
 $$
 
-Once again, $\frac{\partial C}{\partial X^{(1)}}=\frac{\partial C}{\partial Y^{(0)}}$, so:
+Once again, $\displaystyle{\frac{\partial C}{\partial X^{(1)}}=\frac{\partial C}{\partial Y^{(0)}}}$, so:
 
 $$
 \begin{align*}
@@ -341,7 +341,7 @@ $$
 \end{align*}
 $$
 
-There is no need to compute $\frac{\partial C}{\partial X^{(0)}}$, so we are done!
+There is no need to compute $\displaystyle{\frac{\partial C}{\partial X^{(0)}}}$, so we are done!
 
 From here, we can update our parameters as follows:
 

@@ -1,5 +1,7 @@
 # Math $\rightarrow$ Python
 
+- [`layers.py`](#layerspy)
+
 ## `layers.py`
 
 Starting with `layers.py`, we initalize a base class `Layer` that each subsequent layer can inherit from. This class is abstract, defining forward and backward functions to later be overwritten with the relavent foward pass and backpropagation formulas depending on the type of layer. 

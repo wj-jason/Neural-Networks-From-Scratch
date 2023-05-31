@@ -88,6 +88,7 @@ Now we can write the code for the train and test loops. Starting with the train 
 - derivative of error function
 - epochs
 - learning rate
+
 First, we need to set up a loop to iterate over the range of epochs:
 
 ```

@@ -144,7 +144,7 @@ def train(network, X, Y, error_func, error_prime, epochs, learning_rate):
             print(f'Epoch: {epoch:3} | Error: {error}')
 ```        
 
-The test loop is significantly easier, as there is parameter updating involved. All we need to do is run through each data entry in the test set and compute the forward pass, and error. Since all the code in `test()` can be found in `train()`, there's no need to go over it all again.
+The test loop is significantly easier, and much of the code can from `train()` can be reused. All we need to do is run through each data entry in the test set and compute the forward pass, and error. Since all the code in `test()` can be found in `train()`, there's no need to go over it all again.
 
 ```
 def test(network, X, Y, error_func):

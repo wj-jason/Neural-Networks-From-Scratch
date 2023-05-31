@@ -64,7 +64,7 @@ The activation layer is much simpler than the linear layer, as it's forward pass
 
 ---
 
-## error_functions.py - [contents](#math-rightarrow-python)
+## `error_functions.py` - [contents](#math-rightarrow-python)
 
 Next, we will need to create our error function, as well as it's derivative. Since we are using MSE (mean squared error), this process is fairly simple:
 

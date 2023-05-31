@@ -1,11 +1,11 @@
 # Math $\rightarrow$ Python
 
-- [`layers.py`](#layerspy)
-- [`error_functions.py`](#error_functionspy)
-- [`run.py`](#runpy)
-- [`main.py`](#mainpy)
+- [`layers.py`](#layerspy---contents)
+- [`error_functions.py`](#error_functionspy---contents)
+- [`run.py`](#runpy---contents)
+- [`main.py`](#mainpy---contents)
 
-## `layers.py`
+## `layers.py` - [contents](#math-rightarrow-python)
 
 Starting with `layers.py`, we initalize a base class `Layer` that each subsequent layer can inherit from. This class is abstract, defining forward and backward functions to later be overwritten with the relavent foward pass and backpropagation formulas depending on the type of layer. 
 
@@ -64,7 +64,7 @@ The activation layer is much simpler than the linear layer, as it's forward pass
 
 ---
 
-## `error_functions.py`
+## `error_functions.py` - [contents](#math-rightarrow-python)
 
 Next, we will need to create our error function, as well as it's derivative. Since we are using MSE (mean squared error), this process is fairly simple:
 
@@ -78,7 +78,7 @@ def MSE_prime(y_true, y_pred):
 
 ---
 
-## `run.py`
+## `run.py` - [contents](#math-rightarrow-python)
 
 Now we can write the code for the train and test loops. Starting with the train loop, we will first create a function `train()` with the folliwng parameters:
 - the model
@@ -193,7 +193,7 @@ def run(network, X, Y, error_func, error_prime, epochs, learning_rate):
 
 ---
 
-## `main.py`
+## `main.py` - [contents](#math-rightarrow-python)
 
 Finally, we can put everything together inside of `main.py`. We start by importing all the objects and functions we defined earlier, along with the dataset and NumPy.
 

@@ -1,13 +1,13 @@
 # The Mathematics Behind Neural Networks
 
 1. [Indexing](#1-indexing---contents)
-2. [Forward Pass](#2-forward-pass)
-3. [Activation Layers](#3-activation-layers)
-4. [Cost Function](#4-cost-function)
-5. [Backpropagation 1](#5-backpropagation-1)
-6. [Backpropagation 2](#6-backpropagation-2)
-7. [Gradient Descent](#7-gradient-descent)
-8. [Example Network](#8-example-network)
+2. [Forward Pass](#2-forward-pass---contents)
+3. [Activation Layers](#3-activation-layers---contents)
+4. [Cost Function](#4-cost-function---contents)
+5. [Backpropagation 1](#5-backpropagation-1---contents)
+6. [Backpropagation 2](#6-backpropagation-2---contents)
+7. [Gradient Descent](#7-gradient-descent---contents)
+8. [Example Network](#8-example-network---contents)
 
 ---
 
@@ -57,7 +57,7 @@ While it's important to take note of the superscripts for layers, we will be dro
 
 ---
 
-## 2. Forward Pass
+## 2. Forward Pass - [contents](#the-mathematics-behind-neural-networks)
 
 The forward pass refernces transformation of the input as it moves throughout the network. Each neuron from the input layer is connected to every single neuron in the output layer. Thus the value of some output neuron $y_m$ is given as a weighted sum of all neurons in the previous layer, plus the bias term for that neuron. 
 $$\Large y_m=(w_{m0}x_0+w_{m1}x_1w_{m2}x_2+ ... + w_{mn}x_n)+b_m$$
@@ -75,7 +75,7 @@ It can now be seen how the outputs for one layer act as the inputs for the next,
 
 ---
 
-## 3. Activation Layers
+## 3. Activation Layers - [contents](#the-mathematics-behind-neural-networks)
 
 As important as the forward pass matrix vector prodcut is, if that was the _only_ thing done by our network, it would be equivalent to just a fancy linear transformation. Thus if trying to train on non-linear data, the model fails. This is why we introduce non-linear layers into the network. Non-linear layers will have the same number of neurons as it's input, and simply applies a non-linear function to it. Some common examples are as follows:
 $$\Large \text{ReLU}(x)=\text{R}(x)=\text{max}(0,x)$$
@@ -87,7 +87,7 @@ The use is fairly simple. Between each hidden layer (layers between initial inpu
 
 ---
 
-## 4. Cost Function
+## 4. Cost Function - [contents](#the-mathematics-behind-neural-networks)
 
 The cost (also referred to as loss or error) of some layer is the deviation from the expected output. Many functions can serve as cost functions, but we will be using the Mean Squared Error (MSE) function, defined as: 
 $$\Large C=\frac{1}{n}\sum_{i=0}^{n-1}(\hat{y}_i-y_i)^2$$
@@ -95,7 +95,7 @@ Where $\hat{y}$ is the actual or expected output value.
 
 ---
 
-## 5. Backpropagation 1
+## 5. Backpropagation 1 - [contents](#the-mathematics-behind-neural-networks)
 
 Another way to reference the forward pass is to say _forward propagation_. The given input _propogates_ throughout the network to produce some output.
 
@@ -252,7 +252,7 @@ $$
 
 ---
 
-## 6. Backpropagation 2
+## 6. Backpropagation 2 - [contents](#the-mathematics-behind-neural-networks)
 
 So now we have our formulas for backpropagation on the forward pass, but what about the activation layers?
 
@@ -272,7 +272,7 @@ Where $\odot$ represents element-wise multiplication
 
 ---
 
-## 7. Gradient Descent
+## 7. Gradient Descent - [contents](#the-mathematics-behind-neural-networks)
 
 Now that we have all the derivatives, we can begin the "learning" process.
 
@@ -285,7 +285,7 @@ Where $\alpha$ is the _learning rate_, or in other words the amount the paramete
 
 ---
 
-## 8. Example Network
+## 8. Example Network - [contents](#the-mathematics-behind-neural-networks)
 
 We now have all the tools required to set up a basic neural network! For this example, we will keep it extremely simplified, however all the concepts generalize without issues. 
 

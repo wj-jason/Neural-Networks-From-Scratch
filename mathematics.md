@@ -11,7 +11,7 @@
 
 ---
 
-## 1. Indexing -[contents](#the-mathematics-behind-neural-networks)
+## 1. Indexing - [contents](#the-mathematics-behind-neural-networks)
 
 Before diving into the actual math, we need to ensure that there are no ambiguities with respect to what part of the neural net is being referenced.
 

@@ -2,4 +2,4 @@
 
 We will be creating a deep neural network framework from scratch! 
 
-To navigate this repository, start at `mathematics.md` before exploring the various files within `python`.
+To navigate this repository, start at `mathematics.md` before exploring the various files within the `python` directory.
